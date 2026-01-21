@@ -15,7 +15,7 @@
             margin: 0; padding: 0;
             width: 100%; height: 100%;
             background-color: var(--bg-dark);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: white;
             display: flex; justify-content: center; align-items: center;
             overflow: hidden; perspective: 1500px;
@@ -27,93 +27,100 @@
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(50px);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             border: 1px solid rgba(0, 119, 255, 0.15);
-            border-radius: 60px;
+            border-radius: 40px;
             box-shadow: 0 0 100px rgba(0, 119, 255, 0.05);
             transition: transform 0.1s ease-out;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 90vw;
+                height: 80vh;
+                border-radius: 30px;
+            }
+            .brand-name { font-size: 3rem !important; letter-spacing: 5px !important; }
+            .tagline { font-size: 0.7rem !important; letter-spacing: 4px !important; flex-wrap: wrap; justify-content: center; }
+            .days-val { font-size: 4rem !important; }
+            .logo { width: 80px !important; }
         }
 
         .logo { 
-            width: 110px; margin-bottom: 30px; 
+            width: 110px; margin-bottom: 20px; 
             filter: drop-shadow(0 0 15px var(--tech-blue));
             animation: float 5s ease-in-out infinite; 
         }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* ADVANCED LETTER ANIMATION */
         .brand-name { 
-            font-size: 6rem; font-weight: 900; letter-spacing: 12px; 
-            margin: 0; display: flex; 
+            font-size: 5.5rem; font-weight: 900; letter-spacing: 12px; 
+            margin: 0; display: flex; text-align: center;
         }
 
         .letter {
             display: inline-block;
             opacity: 0;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.3s ease;
             animation: assemble 0.8s forwards;
         }
 
         .letter:hover {
             color: var(--tech-cyan);
-            transform: scale(1.3) translateY(-10px);
-            text-shadow: 0 0 30px var(--tech-cyan);
+            transform: scale(1.2) translateY(-5px);
+            text-shadow: 0 0 20px var(--tech-cyan);
         }
 
         @keyframes assemble {
-            0% { opacity: 0; transform: translateY(50px) rotateX(90deg) scale(0.5); filter: blur(10px); }
-            100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); filter: blur(0); }
+            0% { opacity: 0; transform: translateY(30px) scale(0.8); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
         }
 
         /* THE RESEARCHING X CORE */
         .x-researcher {
             color: var(--tech-blue);
             position: relative;
-            padding: 0 15px;
-            text-shadow: 0 0 40px var(--tech-blue);
-            animation: x-flicker 3s infinite;
+            padding: 0 10px;
+            text-shadow: 0 0 30px var(--tech-blue);
         }
 
         .x-researcher::before {
             content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 2px;
-            background: var(--tech-cyan); box-shadow: 0 0 20px var(--tech-cyan);
-            animation: scanLine 1.5s infinite linear;
+            background: var(--tech-cyan); box-shadow: 0 0 15px var(--tech-cyan);
+            animation: scanLine 2s infinite linear;
         }
 
         @keyframes scanLine { 0% { top: 0%; } 100% { top: 100%; } }
-        @keyframes x-flicker { 0%, 100% { opacity: 1; filter: brightness(1.2); } 50% { opacity: 0.8; filter: brightness(1.8); } }
 
         /* ANIMATED TAGLINE */
         .tagline {
-            font-size: 1.1rem; letter-spacing: 12px; color: #555;
-            margin-top: 20px; text-transform: uppercase;
-            display: flex;
+            font-size: 1rem; letter-spacing: 8px; color: #555;
+            margin-top: 15px; text-transform: uppercase;
+            display: flex; text-align: center;
         }
 
-        .tag-word {
-            display: inline-block;
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideIn 0.5s forwards 1.2s;
-            margin-right: 15px;
-        }
-
+        .tag-word { opacity: 0; animation: slideIn 0.5s forwards 1.2s; margin: 0 5px; }
         .tag-x { color: var(--tech-blue); font-weight: bold; }
 
         @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
 
         /* COUNTER */
-        .counter-box { margin-top: 60px; text-align: center; }
+        .counter-box { margin-top: 40px; text-align: center; }
         .days-val { 
-            font-size: 5.5rem; font-weight: 100; color: #fff; 
-            display: block; animation: zoomIn 1s forwards 2s; opacity: 0;
+            font-size: 5rem; font-weight: 100; color: #fff; 
+            display: block; opacity: 0; animation: zoomIn 1s forwards 2s;
         }
-        @keyframes zoomIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-        .label { font-size: 0.75rem; letter-spacing: 8px; color: var(--tech-cyan); text-transform: uppercase; }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .label { font-size: 0.65rem; letter-spacing: 5px; color: var(--tech-cyan); text-transform: uppercase; }
 
-        /* DATA PARTICLES */
-        .bit { position: absolute; color: var(--tech-blue); font-family: monospace; font-size: 12px; pointer-events: none; opacity: 0; animation: ingest 1.5s linear forwards; }
+        /* DATA PARTICLES (Hidden on mobile for performance) */
+        @media (min-width: 769px) {
+            .bit { position: absolute; color: var(--tech-blue); font-family: monospace; font-size: 10px; pointer-events: none; opacity: 0; animation: ingest 1.5s linear forwards; }
+        }
         @keyframes ingest { 0% { transform: translate(var(--sx), var(--sy)); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translate(0, 0); opacity: 0; } }
 
     </style>
@@ -149,40 +156,44 @@
         const count = document.getElementById('count');
         const frame = document.getElementById('frame');
 
-        // Data Bits Ingestion Animation
-        function spawnData() {
-            const bit = document.createElement('div');
-            bit.className = 'bit';
-            const x = (Math.random() - 0.5) * 1000;
-            const y = (Math.random() - 0.5) * 1000;
-            bit.style.setProperty('--sx', `${x}px`);
-            bit.style.setProperty('--sy', `${y}px`);
-            bit.innerText = Math.random() > 0.5 ? "1" : "0";
-            coreX.appendChild(bit);
-            setTimeout(() => bit.remove(), 1500);
+        // Only run data ingestion on desktop to save mobile battery
+        if (window.innerWidth > 768) {
+            function spawnData() {
+                const bit = document.createElement('div');
+                bit.className = 'bit';
+                const x = (Math.random() - 0.5) * 800;
+                const y = (Math.random() - 0.5) * 800;
+                bit.style.setProperty('--sx', `${x}px`);
+                bit.style.setProperty('--sy', `${y}px`);
+                bit.innerText = Math.random() > 0.5 ? "1" : "0";
+                coreX.appendChild(bit);
+                setTimeout(() => bit.remove(), 1500);
+            }
+            setInterval(spawnData, 120);
         }
-        setInterval(spawnData, 100);
 
-        // Counter Animation Logic
+        // Counter Logic
         let val = 0;
         const target = 24;
         setTimeout(() => {
             const timer = setInterval(() => {
                 if(val < target) {
-                    val++;
+                    val=val+4;
                     count.innerText = val;
                 } else {
                     clearInterval(timer);
                 }
-            }, 100);
-        }, 2500);
+            }, 120);
+        }, 2200);
 
-        // 3D Parallax Tilt
-        document.addEventListener('mousemove', (e) => {
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
-            frame.style.transform = `rotateY(${xAxis}deg) rotateX(${-yAxis}deg)`;
-        });
+        // Tilt effect only for non-touch devices
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+                frame.style.transform = `rotateY(${xAxis}deg) rotateX(${-yAxis}deg)`;
+            });
+        }
     </script>
 </body>
 </html>
