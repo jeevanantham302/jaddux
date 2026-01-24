@@ -9,6 +9,7 @@
             --tech-blue: #0077ff;
             --tech-cyan: #00f2ff;
             --bg-dark: #ffffff;
+            --text-grey: #333333; /* New primary grey color */
         }
 
         body, html {
@@ -16,7 +17,7 @@
             width: 100%; height: 100%;
             background-color: var(--bg-dark);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: white;
+            color: var(--text-grey);
             display: flex; justify-content: center; align-items: center;
             overflow: hidden; perspective: 1500px;
         }
@@ -26,12 +27,12 @@
             width: 75vw; height: 75vh;
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(0, 0, 0, 0.02); /* Subtle contrast for light mode */
             backdrop-filter: blur(40px);
             -webkit-backdrop-filter: blur(40px);
-            border: 1px solid rgba(0, 119, 255, 0.15);
+            border: 1px solid rgba(0, 119, 255, 0.1);
             border-radius: 40px;
-            box-shadow: 0 0 100px rgba(0, 119, 255, 0.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
             transition: transform 0.1s ease-out;
             padding: 20px;
             box-sizing: border-box;
@@ -52,14 +53,15 @@
 
         .logo { 
             width: 110px; margin-bottom: 20px; 
-            filter: drop-shadow(0 0 15px var(--tech-blue));
-            animation: float 5s ease-in-out infinite; 
+            filter: drop-shadow(0 0 15px rgb(0, 229, 255));
+            animation: float 2s ease-in-out infinite; 
         }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         .brand-name { 
             font-size: 5.5rem; font-weight: 900; letter-spacing: 12px; 
             margin: 0; display: flex; text-align: center;
+            color: #777777; /* Applied Grey */
         }
 
         .letter {
@@ -70,9 +72,9 @@
         }
 
         .letter:hover {
-            color: var(--tech-cyan);
+            color: rgb(0, 229, 255);
             transform: scale(1.2) translateY(-5px);
-            text-shadow: 0 0 20px var(--tech-cyan);
+            text-shadow: 0 0 50px rgb(0, 229, 255);
         }
 
         @keyframes assemble {
@@ -80,25 +82,22 @@
             100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
         }
 
-        /* THE RESEARCHING X CORE */
         .x-researcher {
             color: var(--tech-blue);
             position: relative;
             padding: 0 10px;
-            text-shadow: 0 0 30px var(--tech-blue);
         }
 
         .x-researcher::before {
-            content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 2px;
-            background: var(--tech-cyan); box-shadow: 0 0 15px var(--tech-cyan);
+            content: ""; position: absolute; left: 0; top: 0; width: 87%; height: 5px;
+            background: rgb(0, 229, 255); box-shadow: 0 0 20px rgb(0, 229, 255);
             animation: scanLine 2s infinite linear;
         }
 
         @keyframes scanLine { 0% { top: 0%; } 100% { top: 100%; } }
 
-        /* ANIMATED TAGLINE */
         .tagline {
-            font-size: 1rem; letter-spacing: 8px; color: #555;
+            font-size: 1rem; letter-spacing: 8px; color: #777;
             margin-top: 15px; text-transform: uppercase;
             display: flex; text-align: center;
         }
@@ -108,16 +107,15 @@
 
         @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
 
-        /* COUNTER */
         .counter-box { margin-top: 40px; text-align: center; }
         .days-val { 
-            font-size: 5rem; font-weight: 100; color: #fff; 
+            font-size: 5rem; font-weight: 100; 
+            color: var(--text-grey); /* Applied Grey */
             display: block; opacity: 0; animation: zoomIn 1s forwards 2s;
         }
         @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        .label { font-size: 0.65rem; letter-spacing: 5px; color: var(--tech-cyan); text-transform: uppercase; }
+        .label { font-size: 0.65rem; letter-spacing: 5px; color: var(--tech-blue); text-transform: uppercase; font-weight: 600; }
 
-        /* DATA PARTICLES (Hidden on mobile for performance) */
         @media (min-width: 769px) {
             .bit { position: absolute; color: var(--tech-blue); font-family: monospace; font-size: 10px; pointer-events: none; opacity: 0; animation: ingest 1.5s linear forwards; }
         }
@@ -136,7 +134,7 @@
             <span class="letter" style="animation-delay: 0.3s">D</span>
             <span class="letter" style="animation-delay: 0.4s">D</span>
             <span class="letter" style="animation-delay: 0.5s">U</span>
-            <span class="letter x-researcher" id="coreX" style="animation-delay: 0.8s">X</span>
+            <span class="letter x-researcher" id="coreX" style="animation-delay: 1s">X</span>
         </div>
 
         <div class="tagline">
@@ -156,7 +154,6 @@
         const count = document.getElementById('count');
         const frame = document.getElementById('frame');
 
-        // Only run data ingestion on desktop to save mobile battery
         if (window.innerWidth > 768) {
             function spawnData() {
                 const bit = document.createElement('div');
@@ -172,7 +169,6 @@
             setInterval(spawnData, 120);
         }
 
-        // Counter Logic
         let val = 0;
         const target = 24;
         setTimeout(() => {
@@ -186,7 +182,6 @@
             }, 120);
         }, 2200);
 
-        // Tilt effect only for non-touch devices
         if (window.matchMedia("(pointer: fine)").matches) {
             document.addEventListener('mousemove', (e) => {
                 const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
