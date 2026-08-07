@@ -8,21 +8,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Updated for Light / White Theme */
-  --bg:#FFFFFF;
-  --surface:#F8FAFC;
+  /* Refreshing, Distraction-Free Theme */
+  --bg:#F8FAFC; /* Soft, airy background */
+  --surface:#FFFFFF;
   --surface-2:#F1F5F9;
   --surface-3:#E2E8F0;
-  --line:#CBD5E1;
-  --line-soft:#E2E8F0;
-  --text:#0F172A;
-  --text-dim:#334155;
-  --text-faint:#64748B;
-  --cyan:#0284C7; /* Darkened for visibility on white */
-  --amber:#D97706; /* Darkened for visibility on white */
-  --violet:#7C3AED;
-  --rose:#E11D48;
-  --green:#16A34A;
+  --line:#E2E8F0; /* Gentle dividers */
+  --line-soft:#F8FAFC;
+  --text:#1E293B; /* Slate 800 (softer than black) */
+  --text-dim:#475569; /* Slate 600 */
+  --text-faint:#94A3B8; /* Slate 400 */
+  
+  /* Refreshing Accents */
+  --cyan:#0EA5E9; /* Sky blue */
+  --amber:#F59E0B; /* Muted amber */
+  --violet:#8B5CF6; /* Soft violet */
+  --rose:#F43F5E; /* Soft rose */
+  --green:#10B981; /* Emerald/Mint */
+  
+  /* Radii for a softer, organic feel */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 6px;
+
   --font-display:'Space Grotesk',sans-serif;
   --font-body:'Inter',sans-serif;
   --font-mono:'IBM Plex Mono',monospace;
@@ -34,40 +42,35 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:var(--font-body);
-  line-height:1.5;
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size:48px 48px;
-  background-attachment:fixed;
+  line-height:1.6;
 }
-a{color:var(--cyan);}
-::selection{background:var(--amber);color:#FFFFFF;}
+a{color:var(--cyan); transition: opacity 0.2s;}
+a:hover{opacity: 0.8;}
+::selection{background:var(--cyan);color:#FFFFFF;}
 
 /* ---------- HERO ---------- */
 .hero{
   position:relative;
-  padding:56px 24px 32px;
+  padding:64px 24px 40px;
   max-width:1180px;
   margin:0 auto;
-  border-bottom:1px solid var(--line);
 }
 .hero-top{
   display:flex; justify-content:space-between; align-items:flex-start; gap:32px; flex-wrap:wrap;
 }
 .eyebrow{
   font-family:var(--font-mono); font-size:12px; letter-spacing:.18em; color:var(--cyan); text-transform:uppercase;
-  display:flex; align-items:center; gap:8px; margin-bottom:14px;
+  display:flex; align-items:center; gap:8px; margin-bottom:16px;
 }
-.eyebrow::before{content:"";width:8px;height:8px;background:var(--cyan);display:inline-block;box-shadow:0 0 8px rgba(2, 132, 199, 0.4);}
+.eyebrow::before{content:"";width:8px;height:8px;background:var(--cyan);display:inline-block; border-radius: 50%;}
 h1.title{
   font-family:var(--font-display); font-weight:700; font-size:clamp(32px,4.6vw,54px);
-  margin:0 0 10px; letter-spacing:-0.01em; max-width:720px;
+  margin:0 0 12px; letter-spacing:-0.02em; max-width:720px; line-height: 1.1;
 }
-h1.title span{color:var(--text-dim); font-weight:400;}
-.subtitle{color:var(--text-dim); font-size:15px; max-width:560px; margin:0 0 6px;}
-.target-line{font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); margin-top:14px;}
-.target-line b{color:var(--amber); font-weight:600;}
+h1.title span{color:var(--text-faint); font-weight:400;}
+.subtitle{color:var(--text-dim); font-size:16px; max-width:580px; margin:0 0 8px;}
+.target-line{font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); margin-top:16px;}
+.target-line b{color:var(--text-dim); font-weight:600;}
 
 /* Gauge */
 .gauge-wrap{display:flex; flex-direction:column; align-items:center; flex-shrink:0;}
@@ -76,194 +79,218 @@ h1.title span{color:var(--text-dim); font-weight:400;}
 .gauge-center{
   position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
 }
-.gauge-pct{font-family:var(--font-display); font-size:36px; font-weight:700; color:var(--text);}
+.gauge-pct{font-family:var(--font-display); font-size:38px; font-weight:700; color:var(--text);}
 .gauge-label{font-family:var(--font-mono); font-size:9.5px; letter-spacing:.14em; color:var(--text-faint); text-transform:uppercase; margin-top:2px;}
-.gauge-caption{font-family:var(--font-mono); font-size:10.5px; color:var(--text-faint); margin-top:10px; letter-spacing:.05em;}
+.gauge-caption{font-family:var(--font-mono); font-size:10.5px; color:var(--text-faint); margin-top:12px; letter-spacing:.05em;}
 
 .stat-strip{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
-  border:1px solid var(--line); margin-top:36px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:40px;
 }
-.stat{background:var(--surface); padding:16px 18px;}
-.stat-num{font-family:var(--font-mono); font-size:22px; font-weight:600; color:var(--text);}
-.stat-num small{font-size:12px; color:var(--text-faint); font-weight:400;}
-.stat-lbl{font-size:11px; color:var(--text-dim); margin-top:4px; text-transform:uppercase; letter-spacing:.06em;}
+.stat{
+  background:var(--surface); padding:20px 24px; border-radius:var(--radius-md);
+  border:1px solid var(--line); box-shadow: 0 4px 20px rgba(0,0,0,0.015);
+}
+.stat-num{font-family:var(--font-mono); font-size:24px; font-weight:600; color:var(--text);}
+.stat-num small{font-size:13px; color:var(--text-faint); font-weight:400; margin-left: 2px;}
+.stat-lbl{font-size:11.5px; color:var(--text-dim); margin-top:6px; text-transform:uppercase; letter-spacing:.06em;}
 
 /* ---------- SECTIONS ---------- */
 main{max-width:1180px; margin:0 auto; padding:0 24px 100px;}
-section{padding:56px 0; border-bottom:1px solid var(--line);}
-.sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:28px;}
-.sec-num{font-family:var(--font-mono); color:var(--text-faint); font-size:13px;}
-h2.sec-title{font-family:var(--font-display); font-size:26px; font-weight:600; margin:0;}
-.sec-desc{color:var(--text-dim); font-size:14.5px; max-width:760px; margin:-14px 0 28px;}
+section{padding:56px 0; position:relative;}
+section::after {
+  content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+section:last-child::after { display: none; }
+
+.sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:24px;}
+.sec-num{font-family:var(--font-mono); color:var(--text-faint); font-size:14px; opacity: 0.6;}
+h2.sec-title{font-family:var(--font-display); font-size:28px; font-weight:600; margin:0; color:var(--text);}
+.sec-desc{color:var(--text-dim); font-size:15px; max-width:760px; margin:-12px 0 32px;}
 
 /* Executive summary phase table */
-.phase-table{width:100%; border-collapse:collapse; font-size:13.5px;}
+.phase-table{width:100%; border-collapse:collapse; font-size:14px; background: var(--surface); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); box-shadow: 0 4px 20px rgba(0,0,0,0.015);}
 .phase-table th{
-  text-align:left; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--text-faint); font-weight:500; padding:10px 14px; border-bottom:1px solid var(--line);
+  text-align:left; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--text-faint); font-weight:500; padding:16px 20px; border-bottom:1px solid var(--line); background: var(--surface-2);
 }
-.phase-table td{padding:14px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
-.phase-table tr:hover td{background:var(--surface);}
+.phase-table td{padding:16px 20px; border-bottom:1px solid var(--line-soft); vertical-align:top; color: var(--text-dim);}
+.phase-table tr:last-child td{border-bottom:none;}
+.phase-table tr:hover td{background:var(--bg);}
 .tag{
-  display:inline-block; font-family:var(--font-mono); font-size:10.5px; padding:2px 8px; border-radius:2px;
-  border:1px solid currentColor; letter-spacing:.04em;
+  display:inline-block; font-family:var(--font-mono); font-size:11px; padding:4px 10px; border-radius:20px;
+  background: currentColor; letter-spacing:.04em; font-weight: 500;
 }
+.tag span { color: #FFFFFF; } /* Ensure text inside tag is white */
 
 /* Doctrine (daily formula) */
 .doctrine-grid{display:grid; grid-template-columns:1fr 44px 1fr; gap:0; align-items:stretch;}
-.doctrine-card{background:var(--surface); border:1px solid var(--line); padding:26px 24px;}
+.doctrine-card{
+  background:var(--surface); border:1px solid var(--line); padding:32px;
+  border-radius:var(--radius-lg); box-shadow: 0 4px 20px rgba(0,0,0,0.015);
+}
 .doctrine-card .blk-tag{font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--text-faint); text-transform:uppercase;}
-.doctrine-card h3{font-family:var(--font-display); font-size:20px; margin:8px 0 4px;}
-.doctrine-card .dur{font-family:var(--font-mono); font-size:13px; margin-bottom:16px; display:inline-block; padding:3px 9px; border:1px solid; border-radius:2px;}
-.doctrine-card ul{margin:0; padding-left:18px; color:var(--text-dim); font-size:13.5px;}
-.doctrine-card li{margin-bottom:7px;}
-.doctrine-arrow{display:flex; align-items:center; justify-content:center; color:var(--text-faint); font-size:20px;}
-.c1{border-top:2px solid var(--cyan);}
-.c1 .dur{color:var(--cyan); border-color:var(--cyan);}
-.c2{border-top:2px solid var(--amber);}
-.c2 .dur{color:var(--amber); border-color:var(--amber);}
+.doctrine-card h3{font-family:var(--font-display); font-size:22px; margin:12px 0 6px;}
+.doctrine-card .dur{
+  font-family:var(--font-mono); font-size:12px; margin-bottom:20px; display:inline-block; 
+  padding:4px 12px; border-radius:20px; font-weight: 500;
+}
+.doctrine-card ul{margin:0; padding-left:20px; color:var(--text-dim); font-size:14px; line-height: 1.7;}
+.doctrine-card li{margin-bottom:8px;}
+.doctrine-card li:last-child{margin-bottom:0;}
+.doctrine-arrow{display:flex; align-items:center; justify-content:center; color:var(--text-faint); font-size:24px; opacity: 0.5;}
+.c1 .dur{color:var(--cyan); background: rgba(14, 165, 233, 0.1);}
+.c2 .dur{color:var(--amber); background: rgba(245, 158, 11, 0.1);}
 
 /* Pipeline / stage nav */
-.pipeline{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+.pipeline{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
 .stage-node{
-  background:var(--surface); border:1px solid var(--line); padding:18px 18px 16px; cursor:pointer;
-  transition:border-color .15s; position:relative;
+  background:var(--surface); border:1px solid var(--line); padding:24px 20px; cursor:pointer;
+  border-radius:var(--radius-md); transition:all .2s ease; position:relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.015);
 }
-.stage-node:hover{border-color:var(--stage-color);}
+.stage-node:hover{transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.04); border-color: var(--line-soft);}
 .stage-node .sn-code{font-family:var(--font-mono); font-size:11px; color:var(--stage-color); letter-spacing:.08em; font-weight:600;}
-.stage-node h4{font-family:var(--font-display); font-size:16.5px; margin:6px 0 4px;}
-.stage-node .sn-range{font-family:var(--font-mono); font-size:11px; color:var(--text-faint); margin-bottom:14px;}
-.sn-bar{height:4px; background:var(--line); position:relative; overflow:hidden;}
-.sn-bar-fill{height:100%; background:var(--stage-color); width:0%; transition:width .4s;}
-.sn-pct{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-top:6px; text-align:right;}
+.stage-node h4{font-family:var(--font-display); font-size:18px; margin:8px 0 6px; color: var(--text);}
+.stage-node .sn-range{font-family:var(--font-mono); font-size:12px; color:var(--text-faint); margin-bottom:16px;}
+.sn-bar{height:6px; background:var(--surface-2); position:relative; overflow:hidden; border-radius: 10px;}
+.sn-bar-fill{height:100%; background:var(--stage-color); width:0%; transition:width .5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 10px;}
+.sn-pct{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-top:8px; text-align:right;}
 
 /* Tracker */
-.stage-section{margin-bottom:6px;}
+.stage-section{margin-bottom:12px;}
 .stage-header{
-  display:flex; align-items:center; gap:12px; padding:14px 0; margin-top:36px;
-  border-bottom:2px solid var(--stage-color);
+  display:flex; align-items:center; gap:16px; padding:20px 0; margin-top:40px;
 }
 .stage-header .sh-badge{
   font-family:var(--font-mono); font-size:12px; color:#FFFFFF; background:var(--stage-color);
-  padding:3px 9px; font-weight:600; letter-spacing:.04em;
+  padding:4px 12px; font-weight:600; letter-spacing:.04em; border-radius: 20px;
 }
-.stage-header h3{font-family:var(--font-display); font-size:19px; margin:0; flex:1;}
-.stage-header .sh-pct{font-family:var(--font-mono); font-size:12.5px; color:var(--stage-color); font-weight:600;}
+.stage-header h3{font-family:var(--font-display); font-size:22px; margin:0; flex:1; color: var(--text);}
+.stage-header .sh-pct{font-family:var(--font-mono); font-size:14px; color:var(--text-faint); font-weight:500;}
 
 .month-group-title{
   font-family:var(--font-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint);
-  margin:26px 0 12px; padding-left:2px; border-left:2px solid var(--line); padding-left:10px; font-weight:600;
+  margin:32px 0 16px; padding-left:12px; border-left:3px solid var(--line); font-weight:600;
 }
 
 details.week-card{
-  background:var(--surface); border:1px solid var(--line); margin-bottom:8px;
+  background:var(--surface); border:1px solid var(--line); margin-bottom:12px;
+  border-radius: var(--radius-md); box-shadow: 0 2px 10px rgba(0,0,0,0.01);
+  overflow: hidden; transition: border-color 0.2s;
 }
-details.week-card[open]{border-color:var(--stage-color);}
+details.week-card[open]{border-color:var(--line); box-shadow: 0 8px 30px rgba(0,0,0,0.03);}
 summary.week-summary{
-  list-style:none; cursor:pointer; padding:14px 16px; display:flex; align-items:center; gap:14px;
+  list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:center; gap:16px;
 }
+summary.week-summary:hover { background: var(--bg); }
 summary.week-summary::-webkit-details-marker{display:none;}
-.wk-chevron{font-family:var(--font-mono); color:var(--text-faint); font-size:12px; transition:transform .15s; flex-shrink:0;}
-details[open] .wk-chevron{transform:rotate(90deg);}
-.wk-num{font-family:var(--font-mono); font-size:12.5px; color:var(--stage-color); flex-shrink:0; width:52px; font-weight:600;}
-.wk-title{font-family:var(--font-display); font-size:15px; flex:1; min-width:180px; font-weight:600;}
-.wk-progress-wrap{display:flex; align-items:center; gap:9px; flex-shrink:0;}
-.wk-bar{width:90px; height:5px; background:var(--line); position:relative; overflow:hidden; border-radius:2px;}
-.wk-bar-fill{height:100%; background:var(--stage-color); width:0%; transition:width .3s;}
-.wk-frac{font-family:var(--font-mono); font-size:11px; color:var(--text-faint); width:38px; text-align:right;}
+.wk-chevron{font-family:var(--font-mono); color:var(--text-faint); font-size:12px; transition:transform .2s ease; flex-shrink:0;}
+details[open] .wk-chevron{transform:rotate(90deg); color: var(--text-dim);}
+.wk-num{font-family:var(--font-mono); font-size:13px; color:var(--stage-color); flex-shrink:0; width:54px; font-weight:600;}
+.wk-title{font-family:var(--font-display); font-size:16px; flex:1; min-width:180px; font-weight:500; color: var(--text);}
+.wk-progress-wrap{display:flex; align-items:center; gap:12px; flex-shrink:0;}
+.wk-bar{width:100px; height:6px; background:var(--surface-2); position:relative; overflow:hidden; border-radius:10px;}
+.wk-bar-fill{height:100%; background:var(--stage-color); width:0%; transition:width .4s ease; border-radius:10px;}
+.wk-frac{font-family:var(--font-mono); font-size:12px; color:var(--text-faint); width:42px; text-align:right;}
 
-.days-wrap{padding:4px 16px 18px; border-top:1px solid var(--line-soft);}
+.days-wrap{padding:8px 20px 24px; border-top:1px solid var(--line-soft); background: var(--surface);}
 .day-row{
-  display:grid; grid-template-columns:74px 1fr 1fr 26px; gap:14px; align-items:start;
-  padding:12px 0; border-bottom:1px solid var(--line-soft);
+  display:grid; grid-template-columns:74px 1fr 1fr 32px; gap:20px; align-items:start;
+  padding:16px 0; border-bottom:1px dashed var(--line);
 }
 .day-row:last-child{border-bottom:none;}
-.day-lbl{font-family:var(--font-mono); font-size:11px; color:var(--text-faint); padding-top:2px; font-weight:600;}
-.blk{display:flex; gap:8px; align-items:flex-start;}
+.day-lbl{font-family:var(--font-mono); font-size:12px; color:var(--text-faint); padding-top:4px; font-weight:600;}
+.blk{display:flex; gap:12px; align-items:flex-start;}
 .blk input[type=checkbox]{
-  appearance:none; width:15px; height:15px; border:1px solid var(--text-faint); background:var(--surface-2);
-  cursor:pointer; flex-shrink:0; margin-top:2px; position:relative; border-radius:2px;
+  appearance:none; width:18px; height:18px; border:2px solid var(--line); background:var(--surface-2);
+  cursor:pointer; flex-shrink:0; margin-top:2px; position:relative; border-radius:4px; transition: all 0.2s;
 }
+.blk input[type=checkbox]:hover{border-color: var(--text-faint);}
 .blk input[type=checkbox]:checked{background:var(--green); border-color:var(--green);}
 .blk input[type=checkbox]:checked::after{
-  content:""; position:absolute; left:4px; top:1px; width:4px; height:8px; border:solid #FFFFFF;
+  content:""; position:absolute; left:5px; top:2px; width:4px; height:8px; border:solid #FFFFFF;
   border-width:0 2px 2px 0; transform:rotate(40deg);
 }
-.blk-text{font-size:12.8px; color:var(--text-dim); line-height:1.4;}
-.blk-text b{color:var(--text-faint); font-family:var(--font-mono); font-size:9.5px; letter-spacing:.06em; display:block; margin-bottom:2px; text-transform:uppercase;}
+.blk-text{font-size:14px; color:var(--text-dim); line-height:1.5;}
+.blk-text b{color:var(--text-faint); font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; display:block; margin-bottom:4px; text-transform:uppercase;}
 .day-row.done-both .blk-text{color:var(--text-faint); text-decoration:line-through; text-decoration-color:var(--line);}
 
 /* Updated Link Area for Multiple Links */
 .link-toggle{
-  background:none; border:1px solid var(--line); color:var(--text-faint); width:24px; height:24px; cursor:pointer;
-  font-size:11px; border-radius:2px; display:flex; align-items:center; justify-content:center; margin-top:1px;
+  background:none; border:none; color:var(--text-faint); width:32px; height:32px; cursor:pointer;
+  font-size:14px; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; 
+  transition: all 0.2s; background: var(--surface-2);
 }
-.link-toggle.has-link{border-color:var(--cyan); color:var(--cyan); font-weight:bold; background:var(--surface-2);}
+.link-toggle:hover { background: var(--surface-3); color: var(--text-dim); }
+.link-toggle.has-link{color:var(--cyan); background:rgba(14, 165, 233, 0.1);}
 .link-row{grid-column:1/-1; margin-top:-4px; display:none; flex-direction:column; gap:8px;}
 .link-row.show{display:flex;}
 
-.link-list { display: flex; flex-direction: column; gap: 4px; }
+.link-list { display: flex; flex-direction: column; gap: 6px; }
 .link-item { 
   display: flex; justify-content: space-between; align-items: center; 
-  background: var(--surface-2); padding: 6px 10px; border-radius: 4px; 
-  font-size: 11px; font-family: var(--font-mono); border: 1px solid var(--line-soft);
+  background: var(--bg); padding: 8px 12px; border-radius: var(--radius-sm); 
+  font-size: 12px; font-family: var(--font-mono); border: 1px solid var(--line-soft);
 }
 .link-item a { color: var(--cyan); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90%; }
-.link-item a:hover { text-decoration: underline; }
-.link-item button { background: none; border: none; color: var(--rose); cursor: pointer; font-size: 14px; font-weight: bold; line-height: 1; padding: 0 4px; opacity:0.7; }
-.link-item button:hover { opacity:1; }
+.link-item button { background: none; border: none; color: var(--text-faint); cursor: pointer; font-size: 16px; line-height: 1; padding: 0 4px; transition: color 0.2s; }
+.link-item button:hover { color: var(--rose); }
 
 .link-input-wrap { display: flex; gap: 8px; }
 .link-input-wrap input[type=url]{
-  flex:1; background:var(--surface); border:1px solid var(--line); color:var(--text); font-family:var(--font-mono);
-  font-size:11.5px; padding:6px 9px; border-radius:2px;
+  flex:1; background:var(--bg); border:1px solid var(--line); color:var(--text); font-family:var(--font-mono);
+  font-size:12px; padding:8px 12px; border-radius:var(--radius-sm); transition: border-color 0.2s;
 }
-.link-input-wrap input[type=url]:focus{outline:none; border-color:var(--cyan); background:var(--bg);}
+.link-input-wrap input[type=url]:focus{outline:none; border-color:var(--cyan); background:var(--surface);}
 .link-input-wrap button {
-  background: var(--surface-3); border: 1px solid var(--line); color: var(--text-dim); padding: 4px 12px;
-  border-radius: 2px; font-family: var(--font-mono); font-size: 11px; cursor: pointer; font-weight:600;
+  background: var(--surface-2); border: none; color: var(--text-dim); padding: 8px 16px;
+  border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 12px; cursor: pointer; font-weight:500; transition: all 0.2s;
 }
-.link-input-wrap button:hover { background: var(--cyan); color: #fff; border-color: var(--cyan); }
+.link-input-wrap button:hover { background: var(--cyan); color: #fff; }
 
-.wk-actions{padding:0 16px 14px; display:flex; gap:8px;}
+.wk-actions{padding:0 20px 16px; display:flex; gap:12px; background: var(--surface);}
 .mini-btn{
-  font-family:var(--font-mono); font-size:10.5px; background:var(--surface-2); border:1px solid var(--line);
-  color:var(--text-dim); padding:5px 10px; cursor:pointer; border-radius:2px; font-weight:600;
+  font-family:var(--font-mono); font-size:11px; background:var(--bg); border:1px solid var(--line);
+  color:var(--text-dim); padding:6px 12px; cursor:pointer; border-radius:var(--radius-sm); font-weight:500; transition: all 0.2s;
 }
-.mini-btn:hover{color:var(--text); border-color:var(--text-faint);}
+.mini-btn:hover{background:var(--surface-3); border-color:var(--text-faint); color: var(--text);}
 .deliverable-badge{
-  font-family:var(--font-mono); font-size:10.5px; color:var(--amber); border:1px solid var(--amber);
-  padding:5px 10px; border-radius:2px; margin-left:auto; background:rgba(217, 119, 6, 0.05); font-weight:600;
+  font-family:var(--font-mono); font-size:11px; color:var(--amber); 
+  padding:6px 12px; border-radius:20px; margin-left:auto; background:rgba(245, 158, 11, 0.1); font-weight:500;
 }
 
 /* Export section */
 .export-panel{
-  display:flex; gap:14px; flex-wrap:wrap; align-items:center; background:var(--surface); border:1px solid var(--line);
-  padding:22px 24px;
+  display:flex; gap:16px; flex-wrap:wrap; align-items:center; background:var(--surface); border:1px solid var(--line);
+  padding:28px; border-radius: var(--radius-lg); box-shadow: 0 4px 20px rgba(0,0,0,0.015);
 }
 .btn{
-  font-family:var(--font-mono); font-size:12.5px; padding:10px 18px; border-radius:2px; cursor:pointer;
-  letter-spacing:.03em; border:1px solid; font-weight:600;
+  font-family:var(--font-mono); font-size:13px; padding:12px 20px; border-radius:var(--radius-sm); cursor:pointer;
+  letter-spacing:.02em; border:1px solid; font-weight:500; transition: all 0.2s;
 }
 .btn-primary{background:var(--cyan); border-color:var(--cyan); color:#FFFFFF;}
+.btn-primary:hover{background:#0284c7; border-color:#0284c7;}
 .btn-ghost{background:transparent; border-color:var(--line); color:var(--text-dim);}
 .btn-ghost:hover{background:var(--surface-2); color:var(--text);}
-.btn-danger{background:transparent; border-color:var(--rose); color:var(--rose);}
-.btn-danger:hover{background:rgba(225, 29, 72, 0.05);}
-.export-note{font-size:12.5px; color:var(--text-faint); max-width:420px;}
+.btn-danger{background:transparent; border-color:transparent; color:var(--rose);}
+.btn-danger:hover{background:rgba(244, 63, 94, 0.1);}
+.export-note{font-size:13px; color:var(--text-faint); max-width:420px; line-height: 1.5;}
 #importFile{display:none;}
 
-footer{max-width:1180px; margin:0 auto; padding:30px 24px 60px; font-family:var(--font-mono); font-size:11.5px; color:var(--text-faint);}
+footer{max-width:1180px; margin:0 auto; padding:40px 24px 80px; font-family:var(--font-mono); font-size:12px; color:var(--text-faint); text-align: center;}
 
 @media (max-width:820px){
   .doctrine-grid{grid-template-columns:1fr;}
-  .doctrine-arrow{transform:rotate(90deg); padding:10px 0;}
+  .doctrine-arrow{transform:rotate(90deg); padding:16px 0;}
   .pipeline{grid-template-columns:repeat(2,1fr);}
   .stat-strip{grid-template-columns:repeat(2,1fr);}
-  .day-row{grid-template-columns:52px 1fr 22px; grid-template-areas:"lbl b1 lt" "lbl b2 lt2" "link link link";}
+  .day-row{grid-template-columns:52px 1fr 32px; grid-template-areas:"lbl b1 lt" "lbl b2 lt2" "link link link";}
   .day-row .blk:first-of-type{grid-column:2;}
   .hero-top{flex-direction:column;}
+  .export-panel { flex-direction: column; align-items: stretch; }
+  .export-note { max-width: 100%; }
 }
 </style>
 </head>
@@ -275,14 +302,14 @@ footer{max-width:1180px; margin:0 auto; padding:30px 24px 60px; font-family:var(
       <div class="eyebrow">Master Build Plan · 50 Weeks</div>
       <h1 class="title">The L6 Protocol<br><span>Senior ML Engineer Execution System</span></h1>
       <p class="subtitle">A zero-to-E6/L6 curriculum: beginner programmer to a &gt;99% confidence technical-loop candidate for Meta, Google, OpenAI, and Netflix ML engineering bars.</p>
-      <div class="target-line">TIME BUDGET: <b>1.5–2 HRS / DAY</b> &nbsp;·&nbsp; ~10–14 HRS / WEEK &nbsp;·&nbsp; 350 EXECUTION DAYS &nbsp;·&nbsp; 4 STAGES / 8 PHASES</div>
+      <div class="target-line">TIME BUDGET: <b>1.5–2 HRS / DAY</b> &nbsp;·&nbsp; ~10–14 HRS / WEEK &nbsp;·&nbsp; 350 EXECUTION DAYS</div>
     </div>
     <div class="gauge-wrap">
       <div class="gauge">
         <svg width="186" height="186" viewBox="0 0 186 186">
-          <circle cx="93" cy="93" r="82" fill="none" stroke="#E2E8F0" stroke-width="10"/>
-          <circle id="gaugeArc" cx="93" cy="93" r="82" fill="none" stroke="#0284C7" stroke-width="10"
-                  stroke-linecap="butt" stroke-dasharray="515.2" stroke-dashoffset="515.2"/>
+          <circle cx="93" cy="93" r="82" fill="none" stroke="var(--line)" stroke-width="8"/>
+          <circle id="gaugeArc" cx="93" cy="93" r="82" fill="none" stroke="var(--cyan)" stroke-width="8"
+                  stroke-linecap="round" stroke-dasharray="515.2" stroke-dashoffset="515.2" style="transition: stroke-dashoffset 1s ease-out, stroke 0.5s ease;"/>
         </svg>
         <div class="gauge-center">
           <div class="gauge-pct" id="gaugePct">0%</div>
@@ -315,16 +342,16 @@ footer{max-width:1180px; margin:0 auto; padding:30px 24px 60px; font-family:var(
   </p>
   <table class="phase-table">
     <tr><th>Stage</th><th>Months</th><th>Phase</th><th>Core Output</th></tr>
-    <tr><td><span class="tag" style="color:#0284C7; border-color:#0284C7">STAGE 01</span></td><td>1–2</td><td>Absolute Beginner Foundations</td><td>Python fluency, NumPy/Pandas, Linear Algebra, Calculus, Probability &amp; Optimization from first principles</td></tr>
-    <tr><td><span class="tag" style="color:#0284C7; border-color:#0284C7">STAGE 01</span></td><td>2</td><td>Foundational Math</td><td>Hand-derived gradients, SVD/PCA, Bayesian reasoning, hand-rolled optimizers</td></tr>
-    <tr><td><span class="tag" style="color:#D97706; border-color:#D97706">STAGE 02</span></td><td>3–4</td><td>Data Structures &amp; Algorithms</td><td>150+ LeetCode Medium/Hard across arrays → DP, timed mock loops</td></tr>
-    <tr><td><span class="tag" style="color:#D97706; border-color:#D97706">STAGE 02</span></td><td>5</td><td>Classical ML From Scratch</td><td>Linear/Logistic Regression, Trees, RF, XGBoost mechanics, GMM/EM — vectorized NumPy only</td></tr>
-    <tr><td><span class="tag" style="color:#7C3AED; border-color:#7C3AED">STAGE 03</span></td><td>6</td><td>Deep Learning &amp; Autograd</td><td>Hand-built autograd engine, PyTorch internals, CNN/ResNet, Transformer primitives</td></tr>
-    <tr><td><span class="tag" style="color:#7C3AED; border-color:#7C3AED">STAGE 03</span></td><td>7–8</td><td>C++ Systems &amp; Concurrency</td><td>RAII, smart pointers, move semantics, multithreading, cache-aware performance engineering</td></tr>
-    <tr><td><span class="tag" style="color:#E11D48; border-color:#E11D48">STAGE 04</span></td><td>9</td><td>GPU Core &amp; Triton</td><td>SM/warp architecture, tiled GEMM, softmax &amp; reduction CUDA kernels, Triton</td></tr>
-    <tr><td><span class="tag" style="color:#E11D48; border-color:#E11D48">STAGE 04</span></td><td>10</td><td>Generative AI &amp; LLMs</td><td>GQA/MQA/MLA, RoPE, MoE routing, LoRA/QLoRA, INT8/INT4 quantization, RLHF/DPO</td></tr>
-    <tr><td><span class="tag" style="color:#E11D48; border-color:#E11D48">STAGE 04</span></td><td>11</td><td>Distributed Systems &amp; HPC</td><td>Ring-AllReduce, DDP/FSDP, Megatron TP, 1F1B pipelining, FlashAttention, classic system design</td></tr>
-    <tr><td><span class="tag" style="color:#E11D48; border-color:#E11D48">STAGE 04</span></td><td>12</td><td>Production ML Design &amp; Leadership</td><td>Multi-stage rec-sys, HNSW vector search, vLLM/PagedAttention, RAG/Agents, MLOps, STAR stories</td></tr>
+    <tr><td><div class="tag" style="color:var(--cyan)"><span>STAGE 01</span></div></td><td>1–2</td><td>Absolute Beginner Foundations</td><td>Python fluency, NumPy/Pandas, Linear Algebra, Calculus, Probability &amp; Optimization from first principles</td></tr>
+    <tr><td><div class="tag" style="color:var(--cyan)"><span>STAGE 01</span></div></td><td>2</td><td>Foundational Math</td><td>Hand-derived gradients, SVD/PCA, Bayesian reasoning, hand-rolled optimizers</td></tr>
+    <tr><td><div class="tag" style="color:var(--amber)"><span>STAGE 02</span></div></td><td>3–4</td><td>Data Structures &amp; Algorithms</td><td>150+ LeetCode Medium/Hard across arrays → DP, timed mock loops</td></tr>
+    <tr><td><div class="tag" style="color:var(--amber)"><span>STAGE 02</span></div></td><td>5</td><td>Classical ML From Scratch</td><td>Linear/Logistic Regression, Trees, RF, XGBoost mechanics, GMM/EM — vectorized NumPy only</td></tr>
+    <tr><td><div class="tag" style="color:var(--violet)"><span>STAGE 03</span></div></td><td>6</td><td>Deep Learning &amp; Autograd</td><td>Hand-built autograd engine, PyTorch internals, CNN/ResNet, Transformer primitives</td></tr>
+    <tr><td><div class="tag" style="color:var(--violet)"><span>STAGE 03</span></div></td><td>7–8</td><td>C++ Systems &amp; Concurrency</td><td>RAII, smart pointers, move semantics, multithreading, cache-aware performance engineering</td></tr>
+    <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>9</td><td>GPU Core &amp; Triton</td><td>SM/warp architecture, tiled GEMM, softmax &amp; reduction CUDA kernels, Triton</td></tr>
+    <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>10</td><td>Generative AI &amp; LLMs</td><td>GQA/MQA/MLA, RoPE, MoE routing, LoRA/QLoRA, INT8/INT4 quantization, RLHF/DPO</td></tr>
+    <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>11</td><td>Distributed Systems &amp; HPC</td><td>Ring-AllReduce, DDP/FSDP, Megatron TP, 1F1B pipelining, FlashAttention, classic system design</td></tr>
+    <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>12</td><td>Production ML Design &amp; Leadership</td><td>Multi-stage rec-sys, HNSW vector search, vLLM/PagedAttention, RAG/Agents, MLOps, STAR stories</td></tr>
   </table>
 </section>
 
@@ -367,23 +394,23 @@ footer{max-width:1180px; margin:0 auto; padding:30px 24px 60px; font-family:var(
 <section id="tracker">
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">50-Week Execution Tracker</h2></div>
   <p class="sec-desc">
-    Check off each block as you complete it. Click the <span style="color:var(--cyan); font-weight:bold;">🔗</span> icon to attach the
-    specific articles, papers, videos, or repos you used that day. <b>Progress saves automatically</b> to your browser.
+    Check off each block as you complete it. Click the <span style="font-weight:bold;">🔗</span> icon to attach the
+    specific articles, papers, videos, or repos you used that day. Progress saves automatically to your browser.
   </p>
   <div id="stageContainer"></div>
 </section>
 
 <section id="export">
   <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Data & Portability</h2></div>
-  <p class="sec-desc">Your state auto-saves to this browser's Local Storage. Export your JSON file to backup your progress or move it to a different device.</p>
+  <p class="sec-desc">Your state auto-saves locally. Export your JSON file to backup your progress or move it to a different device.</p>
   <div class="export-panel">
     <button class="btn btn-primary" id="btnExport">↓ Export Progress (.json)</button>
     <button class="btn btn-ghost" id="btnImportTrigger">↑ Import Progress</button>
     <input type="file" id="importFile" accept="application/json">
-    <button class="btn btn-ghost" id="btnExpandAll">Expand All Weeks</button>
-    <button class="btn btn-ghost" id="btnCollapseAll">Collapse All Weeks</button>
-    <button class="btn btn-danger" id="btnReset">Reset All Progress</button>
-    <p class="export-note">Export regularly (e.g., weekly) and keep the JSON file safe. Re-import it any time, on any device, to restore every checkbox and multiple links.</p>
+    <button class="btn btn-ghost" id="btnExpandAll">Expand All</button>
+    <button class="btn btn-ghost" id="btnCollapseAll">Collapse All</button>
+    <button class="btn btn-danger" id="btnReset">Reset Progress</button>
+    <p class="export-note">Export regularly (e.g., weekly) and keep the JSON file safe. Re-import it any time, on any device, to restore every checkbox and link.</p>
   </div>
 </section>
 
@@ -396,10 +423,10 @@ footer{max-width:1180px; margin:0 auto; padding:30px 24px 60px; font-family:var(
 <script>
 /* ============================= DATA ============================= */
 const STAGES = [
-  {id:1, code:"STAGE 01", title:"Absolute Beginner Foundations", range:"Months 1–2 · Weeks 1–8", color:"#0284C7"},
-  {id:2, code:"STAGE 02", title:"Core CS &amp; ML Foundations", range:"Months 3–5 · Weeks 9–20", color:"#D97706"},
-  {id:3, code:"STAGE 03", title:"Deep Learning, Frameworks &amp; C++ Systems", range:"Months 6–8 · Weeks 21–32", color:"#7C3AED"},
-  {id:4, code:"STAGE 04", title:"Advanced Systems, GPU Core, GenAI &amp; FAANG Mastery", range:"Months 9–12 · Weeks 33–50", color:"#E11D48"},
+  {id:1, code:"STAGE 01", title:"Absolute Beginner Foundations", range:"Months 1–2 · Weeks 1–8", color:"#0EA5E9"},
+  {id:2, code:"STAGE 02", title:"Core CS &amp; ML Foundations", range:"Months 3–5 · Weeks 9–20", color:"#F59E0B"},
+  {id:3, code:"STAGE 03", title:"Deep Learning, Frameworks &amp; C++ Systems", range:"Months 6–8 · Weeks 21–32", color:"#8B5CF6"},
+  {id:4, code:"STAGE 04", title:"Advanced Systems, GPU Core, GenAI &amp; FAANG Mastery", range:"Months 9–12 · Weeks 33–50", color:"#F43F5E"},
 ];
 
 const WEEKS = [
@@ -582,12 +609,8 @@ function dayKey(w,d){ return "w"+w+"d"+d; }
 function getDay(w,d){
   const k = dayKey(w,d);
   if(!STATE[k]) STATE[k] = {b1:false,b2:false,links:[]};
-  
-  // Migration logic in case they load a legacy JSON with string `.link`
   if(STATE[k].link !== undefined) {
-     if(STATE[k].link && STATE[k].link.trim() !== "") {
-         STATE[k].links = [STATE[k].link];
-     }
+     if(STATE[k].link && STATE[k].link.trim() !== "") { STATE[k].links = [STATE[k].link]; }
      delete STATE[k].link;
   }
   if(!STATE[k].links) STATE[k].links = [];
@@ -615,7 +638,7 @@ function buildTracker(){
   let lastGroup = null;
   STAGES.forEach(stage => {
     html += `<div class="stage-section" id="stage-${stage.id}">
-      <div class="stage-header" style="--stage-color:${stage.color}; border-color:${stage.color};">
+      <div class="stage-header" style="--stage-color:${stage.color}">
         <span class="sh-badge" style="background:${stage.color}">${stage.code}</span>
         <h3>${stage.title}</h3>
         <span class="sh-pct" style="color:${stage.color}" id="stageHeadPct${stage.id}">0%</span>
@@ -633,7 +656,7 @@ function buildTracker(){
           <span class="wk-title">${w.title}</span>
           <div class="wk-progress-wrap">
             <div class="wk-bar"><div class="wk-bar-fill" id="wkbar-${w.n}"></div></div>
-            <span class="wk-frac" id="wkfrac-${w.n}">0/12</span>
+            <span class="wk-frac" id="wkfrac-${w.n}">0/14</span>
           </div>
         </summary>
         <div class="wk-actions">
@@ -806,11 +829,11 @@ function updateAll(){
   document.getElementById("gaugePct").textContent = overallPct + "%";
   document.getElementById("gaugeCaption").textContent = doneBlocks + " / " + TOTAL_BLOCKS + " BLOCKS LOGGED";
 
-  // gauge color shifts as confidence builds
-  let color = "#0284C7";
-  if(overallPct >= 85) color = "#16A34A";
-  else if(overallPct >= 50) color = "#D97706";
-  gaugeArc.setAttribute("stroke", color);
+  // gauge color shifts as confidence builds (softer refreshing colors)
+  let color = "var(--cyan)"; 
+  if(overallPct >= 85) color = "var(--green)";
+  else if(overallPct >= 50) color = "var(--amber)"; 
+  gaugeArc.style.stroke = color;
 }
 
 /* ============================= EXPORT / IMPORT ============================= */
