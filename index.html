@@ -1,966 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The L6 Protocol — Senior ML Engineer Build Plan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  /* Refreshing, Distraction-Free Theme */
-  --bg:#F8FAFC; 
-  --surface:#FFFFFF;
-  --surface-2:#F1F5F9;
-  --surface-3:#E2E8F0;
-  --line:#E2E8F0; 
-  --line-soft:#F8FAFC;
-  --text:#1E293B; 
-  --text-dim:#475569; 
-  --text-faint:#94A3B8; 
-  
-  /* Refreshing Accents */
-  --cyan:#0EA5E9; 
-  --amber:#F59E0B; 
-  --violet:#8B5CF6; 
-  --rose:#F43F5E; 
-  --green:#10B981; 
-  
-  /* Radii for a softer, organic feel */
-  --radius-lg: 16px;
-  --radius-md: 12px;
-  --radius-sm: 6px;
-
-  --font-display:'Space Grotesk',sans-serif;
-  --font-body:'Inter',sans-serif;
-  --font-mono:'IBM Plex Mono',monospace;
-}
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font-body);
-  line-height:1.6;
-}
-a{color:var(--cyan); transition: opacity 0.2s;}
-a:hover{opacity: 0.8;}
-::selection{background:var(--cyan);color:#FFFFFF;}
-
-/* ---------- HERO ---------- */
-.hero{
-  position:relative;
-  padding:64px 24px 40px;
-  max-width:1180px;
-  margin:0 auto;
-}
-.hero-top{
-  display:flex; justify-content:space-between; align-items:flex-start; gap:32px; flex-wrap:wrap;
-}
-.eyebrow{
-  font-family:var(--font-mono); font-size:12px; letter-spacing:.18em; color:var(--cyan); text-transform:uppercase;
-  display:flex; align-items:center; gap:8px; margin-bottom:16px; flex-wrap:wrap;
-}
-.eyebrow::before{content:"";width:8px;height:8px;background:var(--cyan);display:inline-block; border-radius: 50%;}
-h1.title{
-  font-family:var(--font-display); font-weight:700; font-size:clamp(32px,4.6vw,54px);
-  margin:0 0 12px; letter-spacing:-0.02em; max-width:720px; line-height: 1.1;
-}
-h1.title span{color:var(--text-faint); font-weight:400; display:block;}
-.subtitle{color:var(--text-dim); font-size:16px; max-width:580px; margin:0 0 8px;}
-.target-line{font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); margin-top:16px;}
-.target-line b{color:var(--text-dim); font-weight:600;}
-
-/* Gauge */
-.gauge-wrap{display:flex; flex-direction:column; align-items:center; flex-shrink:0;}
-.gauge{width:186px;height:186px;position:relative;}
-.gauge svg{transform:rotate(-90deg);}
-.gauge-center{
-  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
-}
-.gauge-pct{font-family:var(--font-display); font-size:38px; font-weight:700; color:var(--text);}
-.gauge-label{font-family:var(--font-mono); font-size:9.5px; letter-spacing:.14em; color:var(--text-faint); text-transform:uppercase; margin-top:2px;}
-.gauge-caption{font-family:var(--font-mono); font-size:10.5px; color:var(--text-faint); margin-top:12px; letter-spacing:.05em;}
-
-.stat-strip{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
-  margin-top:40px;
-}
-.stat{
-  background:var(--surface); padding:20px 24px; border-radius:var(--radius-md);
-  border:1px solid var(--line); box-shadow: 0 4px 20px rgba(0,0,0,0.015);
-}
-.stat-num{font-family:var(--font-mono); font-size:24px; font-weight:600; color:var(--text);}
-.stat-num small{font-size:13px; color:var(--text-faint); font-weight:400; margin-left: 2px;}
-.stat-lbl{font-size:11.5px; color:var(--text-dim); margin-top:6px; text-transform:uppercase; letter-spacing:.06em;}
-
-/* ---------- SECTIONS ---------- */
-main{max-width:1180px; margin:0 auto; padding:0 24px 100px;}
-section{padding:56px 0; position:relative;}
-section::after {
-  content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line), transparent);
-}
-section:last-child::after { display: none; }
-
-.sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:24px; flex-wrap:wrap;}
-.sec-num{font-family:var(--font-mono); color:var(--text-faint); font-size:14px; opacity: 0.6;}
-h2.sec-title{font-family:var(--font-display); font-size:28px; font-weight:600; margin:0; color:var(--text);}
-.sec-desc{color:var(--text-dim); font-size:15px; max-width:760px; margin:-12px 0 32px;}
-
-/* Executive summary phase table (Made Responsive) */
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--line);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.015);
-}
-.phase-table{width:100%; min-width:600px; border-collapse:collapse; font-size:14px;}
-.phase-table th{
-  text-align:left; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--text-faint); font-weight:500; padding:16px 20px; border-bottom:1px solid var(--line); background: var(--surface-2);
-}
-.phase-table td{padding:16px 20px; border-bottom:1px solid var(--line-soft); vertical-align:top; color: var(--text-dim);}
-.phase-table tr:last-child td{border-bottom:none;}
-.phase-table tr:hover td{background:var(--bg);}
-.tag{
-  display:inline-block; font-family:var(--font-mono); font-size:11px; padding:4px 10px; border-radius:20px;
-  background: currentColor; letter-spacing:.04em; font-weight: 500; white-space: nowrap;
-}
-.tag span { color: #FFFFFF; } 
-
-/* Doctrine (daily formula) */
-.doctrine-grid{display:grid; grid-template-columns:1fr 44px 1fr; gap:0; align-items:stretch;}
-.doctrine-card{
-  background:var(--surface); border:1px solid var(--line); padding:32px;
-  border-radius:var(--radius-lg); box-shadow: 0 4px 20px rgba(0,0,0,0.015);
-}
-.doctrine-card .blk-tag{font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--text-faint); text-transform:uppercase;}
-.doctrine-card h3{font-family:var(--font-display); font-size:22px; margin:12px 0 6px;}
-.doctrine-card .dur{
-  font-family:var(--font-mono); font-size:12px; margin-bottom:20px; display:inline-block; 
-  padding:4px 12px; border-radius:20px; font-weight: 500;
-}
-.doctrine-card ul{margin:0; padding-left:20px; color:var(--text-dim); font-size:14px; line-height: 1.7;}
-.doctrine-card li{margin-bottom:8px;}
-.doctrine-card li:last-child{margin-bottom:0;}
-.doctrine-arrow{display:flex; align-items:center; justify-content:center; color:var(--text-faint); font-size:24px; opacity: 0.5;}
-.c1 .dur{color:var(--cyan); background: rgba(14, 165, 233, 0.1);}
-.c2 .dur{color:var(--amber); background: rgba(245, 158, 11, 0.1);}
-
-/* Pipeline / stage nav */
-.pipeline{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-.stage-node{
-  background:var(--surface); border:1px solid var(--line); padding:24px 20px; cursor:pointer;
-  border-radius:var(--radius-md); transition:all .2s ease; position:relative;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.015);
-}
-.stage-node:hover{transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.04); border-color: var(--line-soft);}
-.stage-node .sn-code{font-family:var(--font-mono); font-size:11px; color:var(--stage-color); letter-spacing:.08em; font-weight:600;}
-.stage-node h4{font-family:var(--font-display); font-size:18px; margin:8px 0 6px; color: var(--text);}
-.stage-node .sn-range{font-family:var(--font-mono); font-size:12px; color:var(--text-faint); margin-bottom:16px;}
-.sn-bar{height:6px; background:var(--surface-2); position:relative; overflow:hidden; border-radius: 10px;}
-.sn-bar-fill{height:100%; background:var(--stage-color); width:0%; transition:width .5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 10px;}
-.sn-pct{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-top:8px; text-align:right;}
-
-/* Tracker */
-.stage-section{margin-bottom:12px;}
-.stage-header{
-  display:flex; align-items:center; gap:16px; padding:20px 0; margin-top:40px; flex-wrap:wrap;
-}
-.stage-header .sh-badge{
-  font-family:var(--font-mono); font-size:12px; color:#FFFFFF; background:var(--stage-color);
-  padding:4px 12px; font-weight:600; letter-spacing:.04em; border-radius: 20px;
-}
-.stage-header h3{font-family:var(--font-display); font-size:22px; margin:0; flex:1; color: var(--text); min-width:200px;}
-.stage-header .sh-pct{font-family:var(--font-mono); font-size:14px; color:var(--text-faint); font-weight:500;}
-
-.month-group-title{
-  font-family:var(--font-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint);
-  margin:32px 0 16px; padding-left:12px; border-left:3px solid var(--line); font-weight:600;
-}
-
-details.week-card{
-  background:var(--surface); border:1px solid var(--line); margin-bottom:12px;
-  border-radius: var(--radius-md); box-shadow: 0 2px 10px rgba(0,0,0,0.01);
-  overflow: hidden; transition: border-color 0.2s;
-}
-details.week-card[open]{border-color:var(--line); box-shadow: 0 8px 30px rgba(0,0,0,0.03);}
-summary.week-summary{
-  list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-}
-summary.week-summary:hover { background: var(--bg); }
-summary.week-summary::-webkit-details-marker{display:none;}
-.wk-chevron{font-family:var(--font-mono); color:var(--text-faint); font-size:12px; transition:transform .2s ease; flex-shrink:0;}
-details[open] .wk-chevron{transform:rotate(90deg); color: var(--text-dim);}
-.wk-num{font-family:var(--font-mono); font-size:13px; color:var(--stage-color); flex-shrink:0; font-weight:600;}
-.wk-title{font-family:var(--font-display); font-size:16px; flex:1; min-width:180px; font-weight:500; color: var(--text);}
-.wk-progress-wrap{display:flex; align-items:center; gap:12px; flex-shrink:0;}
-.wk-bar{width:100px; height:6px; background:var(--surface-2); position:relative; overflow:hidden; border-radius:10px;}
-.wk-bar-fill{height:100%; background:var(--stage-color); width:0%; transition:width .4s ease; border-radius:10px;}
-.wk-frac{font-family:var(--font-mono); font-size:12px; color:var(--text-faint); width:42px; text-align:right;}
-
-.days-wrap{padding:8px 20px 24px; border-top:1px solid var(--line-soft); background: var(--surface);}
-.day-row{
-  display:grid; grid-template-columns:74px 1fr 1fr 32px; gap:20px; align-items:start;
-  padding:16px 0; border-bottom:1px dashed var(--line);
-}
-.day-row:last-child{border-bottom:none;}
-.day-lbl{font-family:var(--font-mono); font-size:12px; color:var(--text-faint); padding-top:4px; font-weight:600;}
-.blk{display:flex; gap:12px; align-items:flex-start;}
-.blk input[type=checkbox]{
-  appearance:none; width:18px; height:18px; border:2px solid var(--line); background:var(--surface-2);
-  cursor:pointer; flex-shrink:0; margin-top:2px; position:relative; border-radius:4px; transition: all 0.2s;
-}
-.blk input[type=checkbox]:hover{border-color: var(--text-faint);}
-.blk input[type=checkbox]:checked{background:var(--green); border-color:var(--green);}
-.blk input[type=checkbox]:checked::after{
-  content:""; position:absolute; left:5px; top:2px; width:4px; height:8px; border:solid #FFFFFF;
-  border-width:0 2px 2px 0; transform:rotate(40deg);
-}
-.blk-text{font-size:14px; color:var(--text-dim); line-height:1.5;}
-.blk-text b{color:var(--text-faint); font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; display:block; margin-bottom:4px; text-transform:uppercase;}
-.day-row.done-both .blk-text{color:var(--text-faint); text-decoration:line-through; text-decoration-color:var(--line);}
-
-/* Link Area */
-.link-toggle{
-  background:none; border:none; color:var(--text-faint); width:32px; height:32px; cursor:pointer;
-  font-size:14px; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; 
-  transition: all 0.2s; background: var(--surface-2);
-}
-.link-toggle:hover { background: var(--surface-3); color: var(--text-dim); }
-.link-toggle.has-link{color:var(--cyan); background:rgba(14, 165, 233, 0.1);}
-.link-row{grid-column:1/-1; margin-top:-4px; display:none; flex-direction:column; gap:8px;}
-.link-row.show{display:flex;}
-
-.link-list { display: flex; flex-direction: column; gap: 6px; }
-.link-item { 
-  display: flex; justify-content: space-between; align-items: center; 
-  background: var(--bg); padding: 8px 12px; border-radius: var(--radius-sm); 
-  font-size: 12px; font-family: var(--font-mono); border: 1px solid var(--line-soft);
-}
-.link-item a { color: var(--cyan); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 85%; }
-.link-item button { background: none; border: none; color: var(--text-faint); cursor: pointer; font-size: 16px; line-height: 1; padding: 0 4px; transition: color 0.2s; }
-.link-item button:hover { color: var(--rose); }
-
-.link-input-wrap { display: flex; gap: 8px; flex-wrap:wrap;}
-.link-input-wrap input[type=url]{
-  flex:1; min-width:200px; background:var(--bg); border:1px solid var(--line); color:var(--text); font-family:var(--font-mono);
-  font-size:12px; padding:8px 12px; border-radius:var(--radius-sm); transition: border-color 0.2s;
-}
-.link-input-wrap input[type=url]:focus{outline:none; border-color:var(--cyan); background:var(--surface);}
-.link-input-wrap button {
-  background: var(--surface-2); border: none; color: var(--text-dim); padding: 8px 16px;
-  border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 12px; cursor: pointer; font-weight:500; transition: all 0.2s; white-space:nowrap;
-}
-.link-input-wrap button:hover { background: var(--cyan); color: #fff; }
-
-.wk-actions{padding:0 20px 16px; display:flex; gap:12px; flex-wrap:wrap; background: var(--surface); align-items:center;}
-.mini-btn{
-  font-family:var(--font-mono); font-size:11px; background:var(--bg); border:1px solid var(--line);
-  color:var(--text-dim); padding:6px 12px; cursor:pointer; border-radius:var(--radius-sm); font-weight:500; transition: all 0.2s;
-}
-.mini-btn:hover{background:var(--surface-3); border-color:var(--text-faint); color: var(--text);}
-.deliverable-badge{
-  font-family:var(--font-mono); font-size:11px; color:var(--amber); 
-  padding:6px 12px; border-radius:20px; margin-left:auto; background:rgba(245, 158, 11, 0.1); font-weight:500;
-}
-
-/* Export section */
-.export-panel{
-  display:flex; gap:16px; flex-wrap:wrap; align-items:center; background:var(--surface); border:1px solid var(--line);
-  padding:28px; border-radius: var(--radius-lg); box-shadow: 0 4px 20px rgba(0,0,0,0.015);
-}
-.btn{
-  font-family:var(--font-mono); font-size:13px; padding:12px 20px; border-radius:var(--radius-sm); cursor:pointer;
-  letter-spacing:.02em; border:1px solid; font-weight:500; transition: all 0.2s; width:100%; max-width:max-content;
-}
-.btn-primary{background:var(--cyan); border-color:var(--cyan); color:#FFFFFF;}
-.btn-primary:hover{background:#0284c7; border-color:#0284c7;}
-.btn-ghost{background:transparent; border-color:var(--line); color:var(--text-dim);}
-.btn-ghost:hover{background:var(--surface-2); color:var(--text);}
-.btn-danger{background:transparent; border-color:transparent; color:var(--rose);}
-.btn-danger:hover{background:rgba(244, 63, 94, 0.1);}
-.export-note{font-size:13px; color:var(--text-faint); max-width:420px; line-height: 1.5;}
-#importFile{display:none;}
-
-footer{max-width:1180px; margin:0 auto; padding:40px 24px 80px; font-family:var(--font-mono); font-size:12px; color:var(--text-faint); text-align: center;}
-
-/* ================== RESPONSIVE SCALING ================== */
-
-@media (max-width:820px){
-  .doctrine-grid{grid-template-columns:1fr;}
-  .doctrine-arrow{transform:rotate(90deg); padding:16px 0;}
-  .pipeline{grid-template-columns:repeat(2,1fr);}
-  .stat-strip{grid-template-columns:repeat(2,1fr);}
-  .hero-top{flex-direction:column; align-items:center; text-align:center;}
-  .eyebrow{justify-content:center;}
-  h1.title{font-size: clamp(28px, 6vw, 42px); margin:0 auto 12px;}
-  .subtitle{margin:0 auto 8px;}
-  
-  /* Retain grid structure for tablets, modify flow */
-  .day-row{grid-template-columns:52px 1fr 32px; grid-template-areas:"lbl b1 lt" "lbl b2 lt2" "link link link";}
-  .day-row .blk:first-of-type{grid-column:2;}
-  .day-row .link-toggle{grid-column:3;}
-  
-  .export-panel { flex-direction: column; align-items: stretch; }
-  .export-note { max-width: 100%; text-align:center;}
-  .btn{ max-width:100%; }
-}
-
-@media (max-width:600px){
-  .pipeline{grid-template-columns:1fr;}
-  .stat-strip{gap:12px;}
-  .stage-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .wk-actions { flex-direction: column; align-items: stretch; }
-  .deliverable-badge { margin-left: 0; text-align: center; }
-  summary.week-summary { flex-direction: column; align-items: flex-start; gap: 12px; padding:16px; }
-  .wk-progress-wrap { width: 100%; justify-content: space-between; }
-  .wk-bar { flex: 1; }
-  
-  /* Fluidize day-rows into stacked flex layout */
-  .day-row { display: flex; flex-direction: column; gap: 12px; padding: 20px 0; }
-  .day-row .blk { grid-column: unset; margin-left: 0; width:100%; }
-  .link-toggle { align-self: flex-start; margin-top:8px;}
-  .link-input-wrap { flex-direction: column; align-items: stretch;}
-}
-
-@media (max-width:400px){
-  .stat-strip{grid-template-columns:1fr;}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeevanantham R - Senior Data Analyst Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        flipkart: {
+                            blue: '#2874f0',
+                            yellow: '#ffe11b',
+                            dark: '#172337'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2874f0 0%, #172337 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-flipkart-blue selection:text-white">
 
-<div class="hero">
-  <div class="hero-top">
-    <div>
-      <div class="eyebrow">Master Build Plan · 50 Weeks</div>
-      <h1 class="title">The L6 Protocol<br><span>Senior ML Engineer Execution System</span></h1>
-      <p class="subtitle">A zero-to-E6/L6 curriculum: beginner programmer to a &gt;99% confidence technical-loop candidate for Meta, Google, OpenAI, and Netflix ML engineering bars.</p>
-      <div class="target-line">TIME BUDGET: <b>1.5–2 HRS / DAY</b> &nbsp;·&nbsp; ~10–14 HRS / WEEK &nbsp;·&nbsp; 350 EXECUTION DAYS</div>
-    </div>
-    <div class="gauge-wrap">
-      <div class="gauge">
-        <svg width="186" height="186" viewBox="0 0 186 186">
-          <circle cx="93" cy="93" r="82" fill="none" stroke="var(--line)" stroke-width="8"/>
-          <circle id="gaugeArc" cx="93" cy="93" r="82" fill="none" stroke="var(--cyan)" stroke-width="8"
-                  stroke-linecap="round" stroke-dasharray="515.2" stroke-dashoffset="515.2" style="transition: stroke-dashoffset 1s ease-out, stroke 0.5s ease;"/>
-        </svg>
-        <div class="gauge-center">
-          <div class="gauge-pct" id="gaugePct">0%</div>
-          <div class="gauge-label">Confidence</div>
+    <!-- Header / Hero Section -->
+    <header class="bg-gradient-to-br from-slate-900 via-slate-800 to-flipkart-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#2874f0_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 py-20 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <div class="space-y-4 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 text-sm font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                        Senior Data Analyst @ Flipkart
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                        Jeevanantham R[cite: 1]
+                    </h1>
+                    <p class="text-lg text-slate-300 leading-relaxed font-light">
+                        7+ years of experience across e-commerce, supply chain, and services analytics[cite: 1]. Building scalable performance frameworks, optimization models, and data platforms[cite: 1].
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2 text-sm text-slate-300">
+                        <a href="mailto:jeevanantham302@gmail.com" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="fa-regular fa-envelope text-blue-400"></i> jeevanantham302@gmail.com[cite: 1]
+                        </a>
+                        <a href="tel:+919655145451" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="fa-solid fa-phone text-blue-400"></i> +91 9655145451[cite: 1]
+                        </a>
+                        <span class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-blue-400"></i> Tiruppur & Bangalore, India[cite: 1]
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-md w-full md:w-80 shadow-2xl">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-blue-400 mb-3">Quick Profile Snapshot</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span class="text-slate-400">Experience</span>
+                            <span class="font-semibold text-white">7+ Years</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span class="text-slate-400">Core Domain</span>
+                            <span class="font-semibold text-white">Supply Chain & Inventory</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span class="text-slate-400">Tech Stack</span>
+                            <span class="font-semibold text-white">BigQuery, GCP, SQL, Python</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-slate-400">Education</span>
+                            <span class="font-semibold text-white">B.E. CSE (2018)[cite: 1]</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="gauge-caption" id="gaugeCaption">0 / 700 BLOCKS LOGGED</div>
-    </div>
-  </div>
+    </header>
 
-  <div class="stat-strip">
-    <div class="stat"><div class="stat-num" id="statBlocks">0<small>/700</small></div><div class="stat-lbl">Blocks Complete</div></div>
-    <div class="stat"><div class="stat-num" id="statHours">0<small>hrs</small></div><div class="stat-lbl">Est. Hours Logged</div></div>
-    <div class="stat"><div class="stat-num" id="statWeeks">0<small>/50</small></div><div class="stat-lbl">Weeks Cleared</div></div>
-    <div class="stat"><div class="stat-num" id="statLinks">0</div><div class="stat-lbl">Resources Logged</div></div>
-  </div>
-</div>
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
 
-<main>
+        <!-- Skills Section -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-blue-100 text-flipkart-blue rounded-lg">
+                    <i class="fa-solid fa-code text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">Technical Expertise & Skills</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-blue-600"></i> Data & Analytics
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">SQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Advanced Excel</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Python</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Data Modelling</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">KPI & Metrics Design</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">RCA Frameworks</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">EDA</span>
+                    </div>
+                </div>
 
-<section id="summary">
-  <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Executive Summary</h2></div>
-  <p class="sec-desc">
-    Twelve months, four stages, eight phases, fifty weeks. The plan takes an absolute beginner through programming
-    fundamentals and mathematical bedrock (Months 1–2), into core computer-science mastery and classical ML built
-    from raw NumPy (Months 3–5), through deep learning internals and production-grade C++ systems programming
-    (Months 6–8), and finally into GPU kernel engineering, generative AI internals, distributed training, and
-    staff-level production system design plus behavioral mastery (Months 9–12). Every phase pairs theory with a
-    concrete, buildable artifact — nothing is passive reading.
-  </p>
-  <div class="table-responsive">
-    <table class="phase-table">
-      <tr><th>Stage</th><th>Months</th><th>Phase</th><th>Core Output</th></tr>
-      <tr><td><div class="tag" style="color:var(--cyan)"><span>STAGE 01</span></div></td><td>1–2</td><td>Absolute Beginner Foundations</td><td>Python fluency, NumPy/Pandas, Linear Algebra, Calculus, Probability &amp; Optimization from first principles</td></tr>
-      <tr><td><div class="tag" style="color:var(--cyan)"><span>STAGE 01</span></div></td><td>2</td><td>Foundational Math</td><td>Hand-derived gradients, SVD/PCA, Bayesian reasoning, hand-rolled optimizers</td></tr>
-      <tr><td><div class="tag" style="color:var(--amber)"><span>STAGE 02</span></div></td><td>3–4</td><td>Data Structures &amp; Algorithms</td><td>150+ LeetCode Medium/Hard across arrays → DP, timed mock loops</td></tr>
-      <tr><td><div class="tag" style="color:var(--amber)"><span>STAGE 02</span></div></td><td>5</td><td>Classical ML From Scratch</td><td>Linear/Logistic Regression, Trees, RF, XGBoost mechanics, GMM/EM — vectorized NumPy only</td></tr>
-      <tr><td><div class="tag" style="color:var(--violet)"><span>STAGE 03</span></div></td><td>6</td><td>Deep Learning &amp; Autograd</td><td>Hand-built autograd engine, PyTorch internals, CNN/ResNet, Transformer primitives</td></tr>
-      <tr><td><div class="tag" style="color:var(--violet)"><span>STAGE 03</span></div></td><td>7–8</td><td>C++ Systems &amp; Concurrency</td><td>RAII, smart pointers, move semantics, multithreading, cache-aware performance engineering</td></tr>
-      <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>9</td><td>GPU Core &amp; Triton</td><td>SM/warp architecture, tiled GEMM, softmax &amp; reduction CUDA kernels, Triton</td></tr>
-      <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>10</td><td>Generative AI &amp; LLMs</td><td>GQA/MQA/MLA, RoPE, MoE routing, LoRA/QLoRA, INT8/INT4 quantization, RLHF/DPO</td></tr>
-      <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>11</td><td>Distributed Systems &amp; HPC</td><td>Ring-AllReduce, DDP/FSDP, Megatron TP, 1F1B pipelining, FlashAttention, classic system design</td></tr>
-      <tr><td><div class="tag" style="color:var(--rose)"><span>STAGE 04</span></div></td><td>12</td><td>Production ML Design &amp; Leadership</td><td>Multi-stage rec-sys, HNSW vector search, vLLM/PagedAttention, RAG/Agents, MLOps, STAR stories</td></tr>
-    </table>
-  </div>
-</section>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-cloud text-blue-600"></i> Cloud & BI
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Google Cloud (GCP)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">BigQuery</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Looker Studio</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">QlikView</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Power BI</span>
+                    </div>
+                </div>
 
-<section id="doctrine">
-  <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">The Daily Doctrine</h2></div>
-  <p class="sec-desc">Every single day — no exceptions — is split into exactly two execution blocks. This rhythm repeats for 350 consecutive days.</p>
-  <div class="doctrine-grid">
-    <div class="doctrine-card c1">
-      <span class="blk-tag">Block 01</span>
-      <h3>Core &amp; Internals</h3>
-      <span class="dur">45–60 MIN</span>
-      <ul>
-        <li>Theory, mathematical derivations, and systems internals</li>
-        <li>Read/derive by hand before ever touching code</li>
-        <li>Whiteboard proofs, architecture diagrams, paper annotation</li>
-        <li>Goal: understand <i>why</i> the mechanism works, not just <i>that</i> it works</li>
-      </ul>
-    </div>
-    <div class="doctrine-arrow">→</div>
-    <div class="doctrine-card c2">
-      <span class="blk-tag">Block 02</span>
-      <h3>Applied Execution</h3>
-      <span class="dur">45–60 MIN</span>
-      <ul>
-        <li>Hands-on Python / C++ / CUDA implementation</li>
-        <li>LeetCode reps or architecture diagramming</li>
-        <li>Ship something runnable and testable every day</li>
-        <li>Goal: convert Block 1 theory into working, benchmarked artifacts</li>
-      </ul>
-    </div>
-  </div>
-</section>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-database text-blue-600"></i> Platforms & Big Data
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Spark SQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">HiveQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">MySQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">MS SQL Server</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Flipkart Platform (FDP)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">SSIS / SSRS</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Azure</span>
+                    </div>
+                </div>
 
-<section id="pipeline">
-  <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Build Pipeline — 4 Stages</h2></div>
-  <p class="sec-desc">Click a stage to jump to its weeks in the tracker below.</p>
-  <div class="pipeline" id="pipelineNodes"></div>
-</section>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye text-blue-600"></i> Domains & Focus
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Inventory Analytics</span>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Supply Chain & Last Mile</span>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Customer Experience</span>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Operations Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="tracker">
-  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">50-Week Execution Tracker</h2></div>
-  <p class="sec-desc">
-    Check off each block as you complete it. Click the <span style="font-weight:bold;">🔗</span> icon to attach the
-    specific articles, papers, videos, or repos you used that day. Progress saves automatically to your browser.
-  </p>
-  <div id="stageContainer"></div>
-</section>
+        <!-- Professional Experience Section -->
+        <section>
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-blue-100 text-flipkart-blue rounded-lg">
+                    <i class="fa-solid fa-briefcase text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">Professional Experience</h2>
+            </div>
 
-<section id="export">
-  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Data & Portability</h2></div>
-  <p class="sec-desc">Your state auto-saves locally. Export your JSON file to backup your progress or move it to a different device.</p>
-  <div class="export-panel">
-    <button class="btn btn-primary" id="btnExport">↓ Export Progress (.json)</button>
-    <button class="btn btn-ghost" id="btnImportTrigger">↑ Import Progress</button>
-    <input type="file" id="importFile" accept="application/json">
-    <button class="btn btn-ghost" id="btnExpandAll">Expand All</button>
-    <button class="btn btn-ghost" id="btnCollapseAll">Collapse All</button>
-    <button class="btn btn-danger" id="btnReset">Reset Progress</button>
-    <p class="export-note">Export regularly (e.g., weekly) and keep the JSON file safe. Re-import it any time, on any device, to restore every checkbox and link.</p>
-  </div>
-</section>
+            <div class="space-y-10 border-l-2 border-blue-200 ml-4 pl-6 relative">
+                
+                <!-- Experience 1: Flipkart Senior Data Analyst -->
+                <div class="relative group">
+                    <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-white bg-blue-600 ring-2 ring-blue-200"></span>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Senior Data Analyst</h3>
+                                <p class="text-blue-600 font-semibold">Flipkart, Bangalore[cite: 1]</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full w-max">
+                                April 2021 - Present[cite: 1]
+                            </span>
+                        </div>
 
-</main>
+                        <!-- Sub-project 1 -->
+                        <div class="space-y-2 border-t border-slate-100 pt-3">
+                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-box-open text-blue-500 text-sm"></i> Flipkart Minutes - Inventory Performance Analytics
+                            </h4>
+                            <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
+                                <li>Designed and developed an end-to-end inventory performance measurement framework for Flipkart Minutes[cite: 1].</li>
+                                <li>Built scalable data models and dashboards using BigQuery and Looker Studio to track inventory health and demand efficiency[cite: 1].</li>
+                                <li>Defined and operationalised key metrics including Fill Rate, POs, Customer & Order Penetration, OOS, GMV, Conversion, Impressions, DOH, Stock Turns, Ullage, and Inventory Value[cite: 1].</li>
+                                <li>Enabled brand negotiations by providing transparent, data-backed views of inventory productivity and conversion performance[cite: 1].</li>
+                                <li>Drove inventory optimisation by identifying inefficiencies across availability, replenishment, and demand conversion[cite: 1].</li>
+                            </ul>
+                        </div>
 
-<footer>
-  THE L6 PROTOCOL — 12 MONTHS / 50 WEEKS / 350 DAYS &nbsp;·&nbsp; Auto-saving locally to your browser.
-</footer>
+                        <!-- Sub-project 2 -->
+                        <div class="space-y-2 border-t border-slate-100 pt-3">
+                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-truck-fast text-blue-500 text-sm"></i> Grocery Supply Chain - Last Mile Asset Performance
+                            </h4>
+                            <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
+                                <li>Developed a comprehensive analytics framework to measure last-mile asset performance across the grocery supply chain[cite: 1].</li>
+                                <li>Designed a multi-theme scoring model based on Reliability, Experience, and Losses[cite: 1]. Ranked assets using composite performance scores to identify top-performing and underperforming nodes[cite: 1].</li>
+                                <li>Designed and implemented an asset-level Breach Attribution Model by stitching together multiple upstream and downstream systems (planning, execution, last-mile operations, and customer touchpoints) to enable true root-cause visibility[cite: 1].</li>
+                                <li>Enabled operations teams to prioritise interventions, reduce losses, and improve service reliability with actionable insights[cite: 1].</li>
+                            </ul>
+                        </div>
 
-<script>
-/* ============================= DATA ============================= */
-const STAGES = [
-  {id:1, code:"STAGE 01", title:"Absolute Beginner Foundations", range:"Months 1–2 · Weeks 1–8", color:"#0EA5E9"},
-  {id:2, code:"STAGE 02", title:"Core CS &amp; ML Foundations", range:"Months 3–5 · Weeks 9–20", color:"#F59E0B"},
-  {id:3, code:"STAGE 03", title:"Deep Learning, Frameworks &amp; C++ Systems", range:"Months 6–8 · Weeks 21–32", color:"#8B5CF6"},
-  {id:4, code:"STAGE 04", title:"Advanced Systems, GPU Core, GenAI &amp; FAANG Mastery", range:"Months 9–12 · Weeks 33–50", color:"#F43F5E"},
-];
+                        <!-- Sub-project 3 -->
+                        <div class="space-y-2 border-t border-slate-100 pt-3">
+                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-network-wired text-blue-500 text-sm"></i> Grocery Supply Chain & Jeeves Analytics (Cross-functional)
+                            </h4>
+                            <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
+                                <li>Provided L0 and L1 visibility across supply chain and service operations[cite: 1]. Instrumented RCA frameworks and driver models for customer pain, breaches, and productivity[cite: 1].</li>
+                                <li>Collaborated closely with Planning, Control Tower, Design, Product, and Engineering teams[cite: 1].</li>
+                                <li>Managed and monitored analytics pipelines on Flipkart Data Platform, proactively resolving failures and dependencies[cite: 1].</li>
+                                <li>Supported tech stack migrations and ensured smooth adoption of new dashboards and metric definitions[cite: 1].</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-const WEEKS = [
-{n:1,stage:1,group:"Month 01 · Python Programming Foundations",title:"Python Syntax, Control Flow &amp; Functions",
- c:["Variables, data types, operators","Control flow: if/else, loops","Functions, scope, *args/**kwargs","Strings: slicing, formatting, methods","Error handling: try/except","File I/O basics"],
- a:["Write 10 syntax drills","Build FizzBuzz + variants","Write 5 utility functions","String manipulation exercises","Add error handling to scripts","Read/write CSV with plain Python"]},
-{n:2,stage:1,group:"Month 01 · Python Programming Foundations",title:"Core Data Structures",
- c:["Lists: methods, slicing, comprehensions","Tuples and immutability","Dicts: hashing, methods, comprehensions","Sets: operations, use cases","Nested structures and JSON","Time complexity of built-ins"],
- a:["Solve 5 list-manipulation drills","Implement a stack/queue with lists","Build a word-frequency counter (dict)","Set-based dedup exercises","Parse nested JSON from a mock API","Big-O audit of your own code"]},
-{n:3,stage:1,group:"Month 01 · Python Programming Foundations",title:"Object-Oriented Programming",
- c:["Classes and objects, __init__","Inheritance and method resolution order","Polymorphism and duck typing","Encapsulation, properties, dunder methods","Abstract base classes","Composition vs inheritance"],
- a:["Model a Vehicle class hierarchy","Refactor FizzBuzz into OOP","Implement operator overloading (__add__)","Add @property to a class","Build ABCs for a Shape hierarchy","Design a small Bank Account system"]},
-{n:4,stage:1,group:"Month 01 · Python Programming Foundations",title:"NumPy, Pandas &amp; Matplotlib",
- c:["NumPy arrays, broadcasting, vectorization","NumPy linear algebra ops","Pandas Series and DataFrame basics","Pandas groupby, merge, pivot","Matplotlib plotting fundamentals","Exploratory data analysis workflow"],
- a:["Vectorize 5 loop-based functions","Implement matrix ops in NumPy","Load and clean a CSV dataset","GroupBy analysis on real dataset","Plot distributions and correlations","Ship a mini EDA notebook"]},
-{n:5,stage:1,group:"Month 02 · Foundational Mathematics",title:"Linear Algebra I — Vectors &amp; Matrices",
- c:["Vectors, norms, dot/cross product","Matrix operations and properties","Matrix rank and null space","Determinants and inverses","Linear systems and Gaussian elimination","Vector spaces and basis"],
- a:["Implement vector ops from scratch","Code matrix multiply by hand","Compute rank via row reduction","Implement a Gaussian elimination solver","Verify linear independence numerically","Benchmark NumPy vs hand-rolled ops"]},
-{n:6,stage:1,group:"Month 02 · Foundational Mathematics",title:"Linear Algebra II — Eigen &amp; SVD",
- c:["Eigenvalues and eigenvectors","Eigendecomposition","Singular Value Decomposition (SVD)","SVD applications (compression, denoising)","PCA derivation via covariance / SVD","Positive semi-definite matrices"],
- a:["Compute eigendecomposition by hand + NumPy","Implement the power-iteration method","Implement SVD-based image compression","Derive and code PCA from scratch","Apply PCA to a real dataset","Visualize eigenvectors geometrically"]},
-{n:7,stage:1,group:"Month 02 · Foundational Mathematics",title:"Calculus for ML",
- c:["Derivatives and partial derivatives","Gradients and directional derivatives","Chain rule (scalar and vector)","Jacobians","Hessians and second-order behavior","Taylor series and local approximation"],
- a:["Compute gradients of loss functions by hand","Implement a numerical gradient checker","Backprop a 2-layer function by hand","Compute the Jacobian of a vector function","Compute the Hessian of a simple loss","Compare numerical vs analytical gradients"]},
-{n:8,stage:1,group:"Month 02 · Foundational Mathematics",title:"Probability &amp; Optimization",
- c:["Probability axioms, conditional prob, Bayes","Random variables and distributions","Expectation, variance, covariance","MLE and MAP estimation","Gradient descent variants (batch/SGD/mini-batch)","Momentum, RMSProp, Adam intuition"],
- a:["Simulate distributions with NumPy","Implement a Bayes-rule toy classifier","Code an MLE estimator for Gaussian data","Implement vanilla gradient descent from scratch","Implement SGD with momentum","Implement the Adam optimizer from scratch"]},
+                <!-- Experience 2: Flipkart Data Analyst - Jeeves -->
+                <div class="relative group">
+                    <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-white bg-slate-400 ring-2 ring-slate-200"></span>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Data Analyst</h3>
+                                <p class="text-blue-600 font-semibold">Flipkart - Jeeves (Home Services & VAS)[cite: 1]</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full w-max">
+                                April 2021 - May 2023[cite: 1]
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
+                            <li>Built end-to-end visibility dashboards for installation, repair, and VAS services using QlikView, HiveQL, MySQL and Python[cite: 1].</li>
+                            <li>Designed metrics for Field Failure Rate, Repeat Repair, TAT (L0/L1/L2), Claims Exposure, Policy Base and Part Demand[cite: 1].</li>
+                            <li>Developed outcome-based attribution models for Refund, Replacement and Repair[cite: 1].</li>
+                            <li>Led the complete migration of Jeeves analytics from QlikView to Flipkart Data Platform, enabling stakeholders through transition sessions[cite: 1].</li>
+                        </ul>
+                    </div>
+                </div>
 
-{n:9,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"Arrays &amp; Two Pointers",
- c:["Array fundamentals and complexity","Two-pointer technique","In-place array manipulation","Prefix sums","String array patterns","Pattern recognition drills"],
- a:["Solve 6 two-pointer Mediums","Solve 4 prefix-sum problems","Solve 4 in-place array problems","Timed set: 5 array problems","Review and re-solve missed problems","Weekly mock: 3 problems, 90 min"]},
-{n:10,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"Sliding Window &amp; Hashing",
- c:["Fixed-size sliding window","Variable-size sliding window","Hash map patterns","Hash set patterns","Anagram / substring problems","Frequency-count techniques"],
- a:["Solve 6 sliding-window Mediums","Solve 5 hashmap-based Mediums","Solve 4 anagram/substring problems","Timed set: 5 problems","Review and re-solve missed problems","Weekly mock: 3 problems, 90 min"]},
-{n:11,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"Linked Lists, Stacks &amp; Queues",
- c:["Singly and doubly linked lists","Fast/slow pointers, cycle detection","Stack applications (monotonic stack)","Queue and deque applications","Design problems (LRU, LFU)","Complexity tradeoffs review"],
- a:["Solve 6 linked-list Mediums","Solve 5 monotonic-stack problems","Solve 4 queue/deque problems","Implement LRU Cache from scratch","Timed set: 5 problems","Weekly mock: 3 problems, 90 min"]},
-{n:12,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"Binary Search &amp; Sorting",
- c:["Binary search patterns and templates","Search-on-answer technique","Sorting algorithms and complexity","Merge sort / quicksort internals","Custom comparators","Divide and conquer"],
- a:["Solve 6 binary-search Mediums","Solve 4 search-on-answer problems","Implement quicksort and mergesort from scratch","Solve 4 sort-based problems","Timed set: 5 problems","Weekly mock: 3 problems, 90 min"]},
-{n:13,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"Trees &amp; Tries",
- c:["Binary trees and traversals (DFS/BFS)","Binary Search Trees","Balanced trees (AVL/Red-Black concept)","Tries","Tree DP","Serialization / deserialization"],
- a:["Solve 6 tree-traversal Mediums","Solve 5 BST problems","Implement a Trie from scratch","Solve 4 trie-based problems","Timed set: 5 problems","Weekly mock: 3 problems, 90 min"]},
-{n:14,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"Graphs",
- c:["Graph representations","BFS and DFS on graphs","Topological sort","Union-Find (Disjoint Set)","Shortest paths (Dijkstra, Bellman-Ford)","MST (Kruskal, Prim) concepts"],
- a:["Solve 6 BFS/DFS graph Mediums","Solve 4 topological-sort problems","Implement Union-Find from scratch","Solve 4 Union-Find problems","Implement Dijkstra's algorithm","Weekly mock: 3 hard problems, 90 min"]},
-{n:15,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"Dynamic Programming I",
- c:["DP fundamentals: memo vs tabulation","1D DP patterns (climbing-stairs family)","Knapsack (0/1, unbounded)","Longest increasing subsequence family","State-machine DP","DP on strings I"],
- a:["Solve 6 1D-DP Mediums","Solve 4 knapsack-variant problems","Solve 4 LIS-family problems","Solve 4 state-machine DP problems","Timed set: 5 problems","Weekly mock: 3 problems, 90 min"]},
-{n:16,stage:2,group:"Months 03–04 · Data Structures &amp; Algorithms",title:"DP II, Heaps, Greedy &amp; Mock Loops",
- c:["2D DP patterns","DP on strings II (edit-distance family)","Interval DP","Heaps and priority queues","Greedy algorithm patterns","Interview strategy and communication"],
- a:["Solve 6 2D-DP Mediums/Hards","Solve 4 heap-based problems","Solve 4 greedy problems","Full 45-min mock interview #1","Full 45-min mock interview #2","Review your 150-problem log for gaps"]},
+                <!-- Experience 3: Pathfinder Business Analysis -->
+                <div class="relative group">
+                    <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-white bg-slate-400 ring-2 ring-slate-200"></span>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Data Engineer</h3>
+                                <p class="text-blue-600 font-semibold">Pathfinder Business Analysis, Coimbatore[cite: 1]</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full w-max">
+                                June 2018 - March 2021[cite: 1]
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
+                            <li>Designed and implemented ETL pipelines integrating heterogeneous real estate data sources[cite: 1].</li>
+                            <li>Built and maintained solutions using SQL Server, SSIS, SSRS, Power BI, Python and Azure[cite: 1].</li>
+                            <li>Created stored procedures, views, triggers, and optimised query performance using indexing and execution plans[cite: 1].</li>
+                            <li>Performed DBA activities including backups, restores, performance tuning, and production deployments, delivering reliable data warehouses[cite: 1].</li>
+                        </ul>
+                    </div>
+                </div>
 
-{n:17,stage:2,group:"Month 05 · Classical ML From Scratch",title:"Linear &amp; Logistic Regression",
- c:["Linear regression: normal equation and GD","Bias-variance tradeoff","Regularization (L1/L2)","Logistic regression and sigmoid","Cross-entropy loss derivation","Multiclass: softmax regression"],
- a:["Implement linear regression (vectorized NumPy)","Implement L1/L2 regularized GD","Implement logistic regression from scratch","Derive and code the gradient of BCE loss","Implement softmax regression from scratch","Benchmark vs scikit-learn on a real dataset"]},
-{n:18,stage:2,group:"Month 05 · Classical ML From Scratch",title:"Decision Trees &amp; Random Forests",
- c:["Decision trees: entropy and Gini","Tree-building algorithm (recursive splits)","Overfitting and pruning","Bagging and bootstrap aggregation","Random Forest algorithm","Feature importance"],
- a:["Implement a decision-tree classifier from scratch","Add pruning to your tree","Implement bootstrap sampling","Implement Random Forest from scratch","Compare to scikit-learn's RF","Compute and plot feature importances"]},
-{n:19,stage:2,group:"Month 05 · Classical ML From Scratch",title:"XGBoost Mechanics &amp; SVM",
- c:["Gradient boosting theory","XGBoost's 2nd-order Taylor approximation","Regularized objective and tree-structure score","SVM: margins and support vectors","Kernel trick and kernel functions","Soft-margin SVM and hinge loss"],
- a:["Implement gradient boosting from scratch","Implement the XGBoost split-gain formula","Reproduce XGBoost behavior on a toy dataset","Implement a linear SVM from scratch","Implement a kernelized SVM (RBF)","Benchmark vs scikit-learn / XGBoost lib"]},
-{n:20,stage:2,group:"Month 05 · Classical ML From Scratch",title:"GMM, EM, K-Means &amp; Naive Bayes",
- c:["K-Means algorithm and convergence","Gaussian Mixture Models","EM algorithm derivation","EM for GMM implementation","PCA implementation review","Naive Bayes classifier"],
- a:["Implement K-Means from scratch","Implement GMM with EM from scratch","Cluster a real dataset with your GMM","Implement PCA from scratch (SVD-based)","Implement Gaussian Naive Bayes","Classical-ML capstone: 1 Kaggle dataset end-to-end"]},
+            </div>
+        </section>
 
-{n:21,stage:3,group:"Month 06 · Deep Learning &amp; Autograd",title:"Autograd Engine From Scratch",
- c:["Computational graphs","Forward pass and topological ordering","Reverse-mode autodiff theory","Backward pass implementation","Operator overloading for autograd","Gradient accumulation and zeroing"],
- a:["Build a scalar autograd engine (micrograd-style)","Add +, -, *, / ops with gradients","Add pow, exp, relu, tanh ops","Build a tiny MLP on your engine","Train your MLP on toy data","Compare gradients vs PyTorch autograd"]},
-{n:22,stage:3,group:"Month 06 · Deep Learning &amp; Autograd",title:"PyTorch Internals",
- c:["Tensor internals: storage and strides","Autograd engine in PyTorch","nn.Module and parameter registration","Optimizer internals (SGD, Adam)","Custom autograd.Function","Dataset / DataLoader internals"],
- a:["Write a custom autograd.Function","Build a training loop from scratch","Implement a custom optimizer","Build a custom Dataset/DataLoader","Profile a training loop","Reproduce your Week 21 MLP in PyTorch"]},
-{n:23,stage:3,group:"Month 06 · Deep Learning &amp; Autograd",title:"CNNs &amp; ResNets",
- c:["Convolution operation and receptive fields","Pooling, stride, padding math","Backprop through conv layers","CNN architectures (LeNet, VGG concepts)","Residual connections and vanishing gradients","BatchNorm theory"],
- a:["Implement conv2d forward pass from scratch","Implement conv2d backward pass from scratch","Build a small CNN in PyTorch","Train the CNN on a CIFAR-10 subset","Implement a ResNet block","Add BatchNorm and compare training curves"]},
-{n:24,stage:3,group:"Month 06 · Deep Learning &amp; Autograd",title:"RNNs, LSTMs &amp; Self-Attention",
- c:["RNN forward/backward and BPTT","Vanishing/exploding gradients in RNNs","LSTM and GRU gates","Self-attention mechanism derivation","Scaled dot-product attention math","Transformer block (multi-head, FFN, residuals)"],
- a:["Implement a vanilla RNN from scratch","Implement an LSTM cell from scratch","Train an LSTM on a sequence task","Implement scaled dot-product attention","Implement multi-head attention from scratch","Build a mini Transformer block end-to-end"]},
+        <!-- Awards & Recognition Section -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-yellow-100 text-amber-600 rounded-lg">
+                    <i class="fa-solid fa-trophy text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">Awards & Recognition</h2>
+            </div>
 
-{n:25,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"C++ Fundamentals",
- c:["C++ syntax and compilation model","Pointers and references","Arrays and pointer arithmetic","Stack vs heap memory","new/delete and manual memory","Const-correctness"],
- a:["Port 5 Python solutions to C++","Practice pointer-arithmetic exercises","Write a manual dynamic-array class","Debug memory issues with valgrind","Practice const-correctness in a mini API","Solve 3 LeetCode problems in C++"]},
-{n:26,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"RAII &amp; Smart Pointers",
- c:["RAII principle","std::unique_ptr semantics","std::shared_ptr and control blocks","std::weak_ptr and cycles","Custom deleters","Rule of 3 / 5 / 0"],
- a:["Refactor Week 25 class to use unique_ptr","Implement a shared_ptr-based resource pool","Fix a reference-cycle with weak_ptr","Write a class following Rule of 5","Implement a custom deleter for a resource","Solve 3 LeetCode problems in C++"]},
-{n:27,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"Move Semantics &amp; Templates",
- c:["Lvalues, rvalues, rvalue references","Move constructors and move assignment","std::move and std::forward","Perfect forwarding","Function templates","Class templates and specialization"],
- a:["Implement a move-enabled buffer class","Benchmark copy vs move performance","Write a perfectly-forwarding wrapper function","Implement a generic Stack&lt;T&gt; template","Specialize a template for a custom type","Solve 3 LeetCode problems in C++"]},
-{n:28,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"STL Deep Dive",
- c:["vector, deque, list internals","map / unordered_map internals","set / unordered_set internals","Iterators and iterator invalidation","STL algorithms (sort, transform, accumulate)","Custom comparators and functors"],
- a:["Benchmark vector vs list vs deque","Implement a custom hash function for unordered_map","Practice 5 STL-algorithm-based exercises","Write a custom comparator for a priority_queue","Implement an LRU cache using STL","Solve 3 LeetCode problems in C++"]},
-{n:29,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"Multithreading",
- c:["std::thread basics","Race conditions and critical sections","std::mutex, lock_guard, unique_lock","std::condition_variable","Producer-consumer pattern","Deadlocks and avoidance strategies"],
- a:["Write a multithreaded counter with a mutex","Implement a producer-consumer queue","Debug a deadlock scenario","Implement a thread-safe singleton","Benchmark mutex contention under load","Solve 2 concurrency-related problems"]},
-{n:30,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"Concurrency Patterns",
- c:["std::atomic and memory-ordering basics","Lock-free data-structure concepts","Thread-pool design","std::future / promise / async","Reader-writer locks","Concurrency in ML serving contexts"],
- a:["Implement a thread pool from scratch","Implement a lock-free counter with atomics","Use std::async for parallel tasks","Implement a reader-writer lock scenario","Stress-test your thread pool","Write up concurrency design notes"]},
-{n:31,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"Memory Locality &amp; Performance",
- c:["Cache hierarchy and cache lines","Data-oriented design principles","Struct-of-arrays vs array-of-structs","False sharing","Memory alignment and padding","Profiling tools (perf, gprof basics)"],
- a:["Benchmark AoS vs SoA layouts","Reproduce a false-sharing slowdown","Profile a hot loop with perf","Optimize a function for cache locality","Measure alignment/padding effects","Write a performance-tuning report"]},
-{n:32,stage:3,group:"Months 07–08 · C++ Systems &amp; Concurrency",title:"C++ Capstone &amp; Mock Loops",
- c:["Design-pattern review (Singleton, Factory, Observer)","System design in a C++ context","Interview communication for C++ rounds","Common C++ interview pitfalls","Code-review best practices","Final C++ concept review"],
- a:["Build an LRU cache (production-quality C++)","Build a thread-safe job scheduler","Full 45-min C++ mock interview #1","Full 45-min C++ mock interview #2","Self/peer code review of your capstone","Consolidate C++ notes and flashcards"]},
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Award 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
+                    <div class="relative z-10 space-y-2">
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Oct 2025</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Ace Alliance Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-600">Delivered critical business agility analyses and built the Buying Looker Dashboard to support brand negotiations and BSM outcomes[cite: 1].</p>
+                    </div>
+                </div>
 
-{n:33,stage:4,group:"Month 09 · GPU Core &amp; Triton",title:"GPU Architecture",
- c:["GPU vs CPU architecture philosophy","Streaming Multiprocessors (SMs)","Warps and SIMT execution model","Global, shared, register, constant memory","Occupancy and latency hiding","Memory coalescing"],
- a:["Set up a CUDA dev environment","Write and run a hello-GPU kernel","Inspect GPU specs via device query","Write a vector-add CUDA kernel","Benchmark coalesced vs uncoalesced access","Profile with nsight/nvprof basics"]},
-{n:34,stage:4,group:"Month 09 · GPU Core &amp; Triton",title:"CUDA Kernels I",
- c:["Thread / block / grid indexing","Kernel launch configuration","Naive matrix-multiplication kernel","Shared-memory basics","Bank conflicts","Synchronization (__syncthreads)"],
- a:["Implement vector operations in CUDA","Implement a naive matmul CUDA kernel","Add shared-memory tiling to matmul","Benchmark naive vs tiled matmul","Debug a bank-conflict scenario","Solve 2 CUDA micro-exercises"]},
-{n:35,stage:4,group:"Month 09 · GPU Core &amp; Triton",title:"CUDA Kernels II — Tiled GEMM &amp; Softmax",
- c:["Tiled GEMM optimization theory","Register blocking and tiling strategies","Softmax kernel design","Numerically stable softmax","Parallel reduction patterns","Warp-level primitives (shuffle)"],
- a:["Implement an optimized tiled GEMM kernel","Benchmark against a cuBLAS baseline","Implement a fused softmax kernel","Implement parallel reduction (sum/max)","Implement warp-shuffle reduction","Compare reduction strategies for speed"]},
-{n:36,stage:4,group:"Month 09 · GPU Core &amp; Triton",title:"Triton Programming",
- c:["Triton programming model","Block-level vs thread-level programming","Triton memory and pointer arithmetic","Autotuning in Triton","Writing a fused kernel in Triton","Triton vs raw CUDA tradeoffs"],
- a:["Write a Triton vector-add kernel","Write a Triton matmul kernel","Write a Triton softmax kernel","Add autotuning configs to a kernel","Benchmark Triton vs native PyTorch ops","GPU capstone: fused elementwise+reduction kernel"]},
+                <!-- Award 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
+                    <div class="relative z-10 space-y-2">
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Apr 2025</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Ace Alliance Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-600">Led the end-to-end development and cross-functional rollout of Grocery Looker dashboards, optimizing backend design and driving platform adoption[cite: 1].</p>
+                    </div>
+                </div>
 
-{n:37,stage:4,group:"Month 10 · Generative AI &amp; LLMs",title:"Attention Variants &amp; RoPE",
- c:["Multi-Head Attention recap","Grouped-Query Attention (GQA)","Multi-Query Attention (MQA)","Multi-Head Latent Attention (MLA)","Rotary Position Embeddings (RoPE) math","KV-cache mechanics"],
- a:["Implement MHA vs GQA vs MQA in PyTorch","Benchmark KV-cache memory across variants","Implement RoPE from scratch","Integrate RoPE into a mini-Transformer","Implement a simplified MLA layer","Write comparison notes: MHA/GQA/MQA/MLA"]},
-{n:38,stage:4,group:"Month 10 · Generative AI &amp; LLMs",title:"Mixture of Experts",
- c:["MoE architecture overview","Top-k gating and routing math","Load-balancing losses","Expert capacity and token dropping","Switch Transformer / Mixtral concepts","MoE training instabilities"],
- a:["Implement a top-k MoE router from scratch","Implement a load-balancing auxiliary loss","Build a tiny MoE layer in PyTorch","Train a toy MoE model","Visualize expert utilization","Write MoE design-tradeoffs summary"]},
-{n:39,stage:4,group:"Month 10 · Generative AI &amp; LLMs",title:"PEFT — LoRA &amp; QLoRA",
- c:["Why full fine-tuning does not scale","LoRA: low-rank decomposition math","LoRA implementation details","QLoRA: 4-bit base + LoRA adapters","Adapter layers and prefix tuning overview","Merging and serving LoRA adapters"],
- a:["Implement a LoRA layer from scratch","Fine-tune a small model with LoRA","Apply QLoRA on a small LLM","Compare full-FT vs LoRA vs QLoRA cost","Merge LoRA weights into the base model","Serve a LoRA-adapted model locally"]},
-{n:40,stage:4,group:"Month 10 · Generative AI &amp; LLMs",title:"Quantization &amp; Alignment",
- c:["Quantization fundamentals (INT8/INT4)","GPTQ algorithm overview","AWQ algorithm overview","FP8 training/inference basics","RLHF pipeline (reward model + PPO)","Direct Preference Optimization (DPO)"],
- a:["Quantize a model to INT8 and benchmark","Apply GPTQ/AWQ via a library, inspect results","Compare FP16 vs INT8 vs INT4 quality","Implement a toy reward model","Implement a simplified DPO loss","Write RLHF vs DPO tradeoffs summary"]},
+                <!-- Award 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
+                    <div class="relative z-10 space-y-2">
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Oct 2022</span>
+                        <h3 class="font-bold text-slate-900 text-lg">BBD Spot Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-600">Recognized for high-ownership execution of repair and VAS operations during the Big Billion Days sale[cite: 1].</p>
+                    </div>
+                </div>
 
-{n:41,stage:4,group:"Month 11 · Distributed Systems &amp; HPC",title:"Collective Communication",
- c:["Distributed training motivation","AllReduce, Broadcast, Scatter, Gather","Ring-AllReduce algorithm and bandwidth math","Parameter-server vs collective paradigms","NCCL basics","Communication/computation overlap"],
- a:["Implement a toy Ring-AllReduce simulation","Benchmark torch.distributed collectives","Profile communication overhead in a script","Simulate multi-GPU training locally (if available)","Write notes on collective communication costs","Reproduce the AllReduce bandwidth formula"]},
-{n:42,stage:4,group:"Month 11 · Distributed Systems &amp; HPC",title:"DDP &amp; FSDP",
- c:["PyTorch DistributedDataParallel internals","Gradient bucketing and overlap in DDP","Fully Sharded Data Parallel (FSDP) theory","Parameter/gradient/optimizer sharding","FSDP wrapping strategies","Mixed-precision training (AMP)"],
- a:["Set up a DDP training script","Benchmark DDP scaling (simulate if needed)","Set up an FSDP training script","Compare memory: DDP vs FSDP","Add AMP mixed precision to training","Write a DDP vs FSDP decision-matrix"]},
-{n:43,stage:4,group:"Month 11 · Distributed Systems &amp; HPC",title:"Megatron TP &amp; Pipeline Parallelism",
- c:["Tensor-parallelism theory (Megatron-LM)","Column/row parallel linear layers","Pipeline-parallelism motivation","1F1B pipeline schedule","Bubble overhead and efficiency math","3D parallelism (data + tensor + pipeline)"],
- a:["Implement a toy tensor-parallel linear layer","Simulate pipeline stages with a 1F1B schedule","Compute pipeline bubble overhead for a config","Compare 3D-parallel configs on paper","Read and annotate the Megatron-LM paper","Write a distributed-training design doc"]},
-{n:44,stage:4,group:"Month 11 · Distributed Systems &amp; HPC",title:"FlashAttention 1/2/3",
- c:["Standard attention's memory bottleneck","Online-softmax algorithm","FlashAttention-1 tiling and recomputation","FlashAttention-2 improvements","FlashAttention-3 (async, FP8) concepts","IO-awareness and kernel-fusion principles"],
- a:["Implement online-softmax in NumPy","Implement a simplified FlashAttention forward pass","Benchmark vs naive attention (memory/speed)","Read and annotate the FlashAttention-2 paper","Read and annotate the FlashAttention-3 paper","Write a FlashAttention explainer for interviews"]},
-{n:45,stage:4,group:"Month 11 · Distributed Systems &amp; HPC",title:"Traditional System Design",
- c:["Load-balancing algorithms and strategies","Consistent-hashing theory","Caching strategies and eviction policies","Message queues and Kafka fundamentals","Database sharding and replication","CAP theorem and consistency models"],
- a:["Design a URL shortener (system-design doc)","Implement consistent hashing from scratch","Design a rate limiter","Design a Kafka-based event pipeline","Design a sharded key-value store","Full system-design mock #1"]},
+                <!-- Award 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
+                    <div class="relative z-10 space-y-2">
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Sep 2022</span>
+                        <h3 class="font-bold text-slate-900 text-lg">SC Analytics - Star of the Month[cite: 1]</h3>
+                        <p class="text-sm text-slate-600">Awarded for customer pain point deep-dives and effective stakeholder collaboration[cite: 1].</p>
+                    </div>
+                </div>
 
-{n:46,stage:4,group:"Month 12 · Production ML System Design &amp; Leadership",title:"Multi-Stage Recommendation Systems",
- c:["Multi-stage rec-sys architecture","Candidate-generation techniques","Ranking models (two-tower, DLRM concepts)","Feature engineering for rec-sys","Collaborative filtering and embeddings","Cold-start and exploration strategies"],
- a:["Design a multi-stage recommender (doc)","Implement a two-tower model in PyTorch","Implement matrix-factorization CF from scratch","Design a candidate-generation pipeline","Design a ranking-stage feature pipeline","System-design mock: 'Design a TikTok feed'"]},
-{n:47,stage:4,group:"Month 12 · Production ML System Design &amp; Leadership",title:"Vector Search &amp; HNSW",
- c:["Embedding spaces and similarity metrics","Approximate Nearest Neighbor (ANN) theory","HNSW algorithm internals","IVF and product-quantization overview","Vector-DB architecture patterns","Embedding serving at scale"],
- a:["Implement brute-force kNN search","Explore an HNSW library implementation","Benchmark HNSW vs brute-force at scale","Design a vector-search service (doc)","Design an embedding-generation pipeline","System-design mock: 'Design semantic search'"]},
-{n:48,stage:4,group:"Month 12 · Production ML System Design &amp; Leadership",title:"LLM Serving — vLLM &amp; PagedAttention",
- c:["LLM inference bottlenecks (memory/compute)","KV-cache management challenges","PagedAttention algorithm","vLLM architecture overview","Continuous batching and scheduling","Speculative decoding overview"],
- a:["Stand up a local vLLM serving instance","Benchmark throughput vs batch size","Diagram a PagedAttention explainer","Design an LLM-serving system (doc)","Compare serving frameworks (vLLM/TGI/TensorRT-LLM)","System-design mock: 'Design ChatGPT infra'"]},
-{n:49,stage:4,group:"Month 12 · Production ML System Design &amp; Leadership",title:"RAG, Agents &amp; MLOps",
- c:["RAG architecture and retrieval strategies","Chunking and re-ranking strategies","Agent architectures and tool use","Feature stores and data pipelines","Model monitoring and drift detection","CI/CD for ML systems"],
- a:["Build a minimal RAG pipeline","Implement a re-ranking step","Design an agentic workflow (doc)","Design a feature-store architecture","Design a model-monitoring system","System-design mock: 'Design a RAG support bot'"]},
-{n:50,stage:4,group:"Month 12 · Production ML System Design &amp; Leadership",title:"Final Mastery &amp; Behavioral Loop",
- c:["L5/L6 rubric deep-dive: what 'senior' means","STAR method structure","Leadership and conflict-resolution stories","Technical-depth storytelling","Ambiguity and tradeoff-navigation stories","Failure and growth stories"],
- a:["Draft 3 STAR leadership stories","Draft 3 STAR technical-depth stories","Draft 3 STAR conflict/ambiguity stories","Full ML system-design mock (60 min)","Full coding + behavioral mock loop","Final review: rate yourself on all 8 phases"]},
-];
+                <!-- Award 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
+                    <div class="relative z-10 space-y-2">
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Oct 2021</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Best New Talent Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-600">Awarded at Flipkart for rapid business understanding and building RCA frameworks with L0/L1 visibility[cite: 1].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-/* ============================= STATE / LOCAL STORAGE ============================= */
-let STATE = {}; 
-try {
-  const stored = localStorage.getItem('l6_protocol_state');
-  if (stored) {
-    STATE = JSON.parse(stored);
-  }
-} catch (e) {
-  console.error("Could not load local storage", e);
-}
+        <!-- Education Section -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-blue-100 text-flipkart-blue rounded-lg">
+                    <i class="fa-solid fa-graduation-cap text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">Education</h2>
+            </div>
 
-function saveState() {
-  localStorage.setItem('l6_protocol_state', JSON.stringify(STATE));
-}
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900">Dr. NGP Institute of Technology, Coimbatore[cite: 1]</h3>
+                    <p class="text-blue-600 font-semibold">Bachelor of Engineering (B.E.) in Computer Science & Engineering[cite: 1]</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full">First Class[cite: 1]</span>
+                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full">May 2014 - June 2018[cite: 1]</span>
+                </div>
+            </div>
+        </section>
 
-function dayKey(w,d){ return "w"+w+"d"+d; }
-function getDay(w,d){
-  const k = dayKey(w,d);
-  if(!STATE[k]) STATE[k] = {b1:false,b2:false,links:[]};
-  if(STATE[k].link !== undefined) {
-     if(STATE[k].link && STATE[k].link.trim() !== "") { STATE[k].links = [STATE[k].link]; }
-     delete STATE[k].link;
-  }
-  if(!STATE[k].links) STATE[k].links = [];
-  return STATE[k];
-}
+    </main>
 
-/* ============================= RENDER ============================= */
-const stageContainer = document.getElementById("stageContainer");
-const pipelineNodes = document.getElementById("pipelineNodes");
-
-function buildPipeline(){
-  pipelineNodes.innerHTML = STAGES.map(s => `
-    <div class="stage-node" style="--stage-color:${s.color}" onclick="document.getElementById('stage-${s.id}').scrollIntoView({behavior:'smooth',block:'start'})">
-      <div class="sn-code">${s.code}</div>
-      <h4>${s.title}</h4>
-      <div class="sn-range">${s.range}</div>
-      <div class="sn-bar"><div class="sn-bar-fill" id="pipeFill${s.id}"></div></div>
-      <div class="sn-pct" id="pipePct${s.id}">0%</div>
-    </div>
-  `).join("");
-}
-
-function buildTracker(){
-  let html = "";
-  let lastGroup = null;
-  STAGES.forEach(stage => {
-    html += `<div class="stage-section" id="stage-${stage.id}">
-      <div class="stage-header" style="--stage-color:${stage.color}">
-        <span class="sh-badge" style="background:${stage.color}">${stage.code}</span>
-        <h3>${stage.title}</h3>
-        <span class="sh-pct" style="color:${stage.color}" id="stageHeadPct${stage.id}">0%</span>
-      </div>`;
-    lastGroup = null;
-    WEEKS.filter(w => w.stage === stage.id).forEach(w => {
-      if(w.group !== lastGroup){
-        html += `<div class="month-group-title">${w.group}</div>`;
-        lastGroup = w.group;
-      }
-      html += `<details class="week-card" id="week-${w.n}" style="--stage-color:${stage.color}">
-        <summary class="week-summary">
-          <span class="wk-chevron">▶</span>
-          <span class="wk-num">WK ${String(w.n).padStart(2,"0")}</span>
-          <span class="wk-title">${w.title}</span>
-          <div class="wk-progress-wrap">
-            <div class="wk-bar"><div class="wk-bar-fill" id="wkbar-${w.n}"></div></div>
-            <span class="wk-frac" id="wkfrac-${w.n}">0/14</span>
-          </div>
-        </summary>
-        <div class="wk-actions">
-          <button class="mini-btn" onclick="markWeek(${w.n}, true)">Mark week complete</button>
-          <button class="mini-btn" onclick="markWeek(${w.n}, false)">Clear week</button>
-          <span class="deliverable-badge">Deliverable: ${w.a[5]}</span>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <p class="font-bold text-lg">Jeevanantham R</p>
+                <p class="text-sm text-slate-400">Senior Data Analyst at Flipkart[cite: 1]</p>
+            </div>
+            <div class="flex items-center gap-6 text-slate-400">
+                <a href="mailto:jeevanantham302@gmail.com" class="hover:text-white transition-colors" title="Email">
+                    <i class="fa-solid fa-envelope text-xl"></i>
+                </a>
+                <a href="tel:+919655145451" class="hover:text-white transition-colors" title="Phone">
+                    <i class="fa-solid fa-phone text-xl"></i>
+                </a>
+            </div>
         </div>
-        <div class="days-wrap">
-          ${buildDayRows(w)}
-        </div>
-      </details>`;
-    });
-    html += `</div>`;
-  });
-  stageContainer.innerHTML = html;
-}
+    </footer>
 
-function buildDayRows(w){
-  let rows = "";
-  for(let d=1; d<=7; d++){
-    const isReview = d === 7;
-    const c1 = isReview ? "Deep review: re-derive key formulas, rebuild flashcards for Week "+w.n : w.c[d-1];
-    const c2 = isReview ? "Reflect: log every resource used this week, plan next week's focus" : w.a[d-1];
-    const key = dayKey(w.n, d);
-    rows += `
-      <div class="day-row" id="row-${key}">
-        <div class="day-lbl">DAY ${d}</div>
-        <div class="blk">
-          <input type="checkbox" data-week="${w.n}" data-day="${d}" data-block="b1" onchange="onCheck(this)">
-          <div class="blk-text"><b>Block 1 · Core</b>${c1}</div>
-        </div>
-        <div class="blk">
-          <input type="checkbox" data-week="${w.n}" data-day="${d}" data-block="b2" onchange="onCheck(this)">
-          <div class="blk-text"><b>Block 2 · Applied</b>${c2}</div>
-        </div>
-        <button class="link-toggle" id="linkToggle-${key}" onclick="toggleLinkUI('${key}')" title="Manage resource links">🔗</button>
-        <div class="link-row" id="linkRow-${key}">
-          <div id="linkList-${key}" class="link-list"></div>
-          <div class="link-input-wrap">
-             <input type="url" placeholder="Paste article/video/repo link..." id="linkInput-${key}">
-             <button onclick="addLink('${key}')">Add Link</button>
-          </div>
-        </div>
-      </div>`;
-  }
-  return rows;
-}
-
-/* ============================= EVENTS ============================= */
-function onCheck(el){
-  const w = el.dataset.week, d = el.dataset.day, block = el.dataset.block;
-  const day = getDay(w,d);
-  day[block] = el.checked;
-  saveState();
-  const row = document.getElementById("row-"+dayKey(w,d));
-  if(day.b1 && day.b2) row.classList.add("done-both"); else row.classList.remove("done-both");
-  updateAll();
-}
-
-function toggleLinkUI(key){
-  const row = document.getElementById("linkRow-"+key);
-  row.classList.toggle("show");
-}
-
-function addLink(key) {
-  const input = document.getElementById("linkInput-" + key);
-  const val = input.value.trim();
-  if(val) {
-      const [w, d] = key.replace("w", "").split("d");
-      const day = getDay(w, d);
-      day.links.push(val);
-      input.value = '';
-      saveState();
-      renderLinks(key);
-      updateAll();
-  }
-}
-
-function removeLink(key, idx) {
-  const [w, d] = key.replace("w", "").split("d");
-  const day = getDay(w, d);
-  day.links.splice(idx, 1);
-  saveState();
-  renderLinks(key);
-  updateAll();
-}
-
-function renderLinks(key) {
-  const [w, d] = key.replace("w", "").split("d");
-  const day = getDay(w, d);
-  const list = document.getElementById("linkList-" + key);
-  const toggle = document.getElementById("linkToggle-" + key);
-  
-  if(day.links && day.links.length > 0) {
-      toggle.classList.add("has-link");
-      list.innerHTML = day.links.map((link, i) => `
-        <div class="link-item">
-          <a href="${link}" target="_blank" rel="noopener">${link}</a>
-          <button onclick="removeLink('${key}', ${i})" title="Remove link">×</button>
-        </div>
-      `).join('');
-  } else {
-      toggle.classList.remove("has-link");
-      list.innerHTML = '';
-  }
-}
-
-function markWeek(n, val){
-  const wObj = WEEKS.find(w => w.n === n);
-  for(let d=1; d<=7; d++){
-    const key = dayKey(n,d);
-    const day = getDay(n,d);
-    day.b1 = val; day.b2 = val;
-    const cb1 = document.querySelector(`input[data-week="${n}"][data-day="${d}"][data-block="b1"]`);
-    const cb2 = document.querySelector(`input[data-week="${n}"][data-day="${d}"][data-block="b2"]`);
-    if(cb1) cb1.checked = val;
-    if(cb2) cb2.checked = val;
-    const row = document.getElementById("row-"+key);
-    if(row){ if(val) row.classList.add("done-both"); else row.classList.remove("done-both"); }
-  }
-  saveState();
-  updateAll();
-}
-
-/* ============================= PROGRESS ============================= */
-const TOTAL_BLOCKS = WEEKS.length * 7 * 2; // 700
-const GAUGE_CIRC = 2 * Math.PI * 82;
-
-function updateAll(){
-  let doneBlocks = 0, linkCount = 0, weeksCleared = 0;
-  const stageDone = {1:0,2:0,3:0,4:0};
-  const stageTotal = {1:0,2:0,3:0,4:0};
-
-  WEEKS.forEach(w => {
-    let wkDone = 0;
-    for(let d=1; d<=7; d++){
-      const day = getDay(w.n, d);
-      if(day.b1){ doneBlocks++; wkDone++; }
-      if(day.b2){ doneBlocks++; wkDone++; }
-      if(day.links && day.links.length > 0) linkCount += day.links.length;
-    }
-    stageDone[w.stage] += wkDone;
-    stageTotal[w.stage] += 14;
-    if(wkDone === 14) weeksCleared++;
-    const bar = document.getElementById("wkbar-"+w.n);
-    const frac = document.getElementById("wkfrac-"+w.n);
-    if(bar){ bar.style.width = Math.round((wkDone/14)*100) + "%"; }
-    if(frac){ frac.textContent = wkDone + "/14"; }
-  });
-
-  STAGES.forEach(s => {
-    const pct = stageTotal[s.id] ? Math.round((stageDone[s.id]/stageTotal[s.id])*100) : 0;
-    const fill = document.getElementById("pipeFill"+s.id);
-    const pctEl = document.getElementById("pipePct"+s.id);
-    const headPct = document.getElementById("stageHeadPct"+s.id);
-    if(fill) fill.style.width = pct + "%";
-    if(pctEl) pctEl.textContent = pct + "%";
-    if(headPct) headPct.textContent = pct + "%";
-  });
-
-  const overallPct = Math.round((doneBlocks/TOTAL_BLOCKS)*100);
-  document.getElementById("statBlocks").innerHTML = doneBlocks + "<small>/" + TOTAL_BLOCKS + "</small>";
-  document.getElementById("statHours").innerHTML = Math.round(doneBlocks * 0.83) + "<small>hrs</small>";
-  document.getElementById("statWeeks").innerHTML = weeksCleared + "<small>/50</small>";
-  document.getElementById("statLinks").textContent = linkCount;
-
-  const gaugeArc = document.getElementById("gaugeArc");
-  const offset = GAUGE_CIRC - (overallPct/100) * GAUGE_CIRC;
-  gaugeArc.style.strokeDashoffset = offset;
-  document.getElementById("gaugePct").textContent = overallPct + "%";
-  document.getElementById("gaugeCaption").textContent = doneBlocks + " / " + TOTAL_BLOCKS + " BLOCKS LOGGED";
-
-  let color = "var(--cyan)"; 
-  if(overallPct >= 85) color = "var(--green)";
-  else if(overallPct >= 50) color = "var(--amber)"; 
-  gaugeArc.style.stroke = color;
-}
-
-/* ============================= EXPORT / IMPORT ============================= */
-document.getElementById("btnExport").addEventListener("click", () => {
-  const blob = new Blob([JSON.stringify(STATE, null, 2)], {type:"application/json"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "l6-protocol-progress-" + new Date().toISOString().slice(0,10) + ".json";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-});
-
-document.getElementById("btnImportTrigger").addEventListener("click", () => {
-  document.getElementById("importFile").click();
-});
-
-document.getElementById("importFile").addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    try{
-      const imported = JSON.parse(ev.target.result);
-      Object.keys(imported).forEach(k => { STATE[k] = imported[k]; });
-      saveState();
-      applyStateToDOM();
-      updateAll();
-      alert("Progress imported successfully.");
-    } catch(err){
-      alert("Could not read that file — make sure it is a progress JSON exported from this page.");
-    }
-  };
-  reader.readAsText(file);
-  e.target.value = "";
-});
-
-function applyStateToDOM(){
-  for(let w=1; w<=50; w++) {
-    for(let d=1; d<=7; d++) {
-      const key = dayKey(w,d);
-      const day = getDay(w,d);
-      
-      const cb1 = document.querySelector(`input[data-week="${w}"][data-day="${d}"][data-block="b1"]`);
-      const cb2 = document.querySelector(`input[data-week="${w}"][data-day="${d}"][data-block="b2"]`);
-      if(cb1) cb1.checked = !!day.b1;
-      if(cb2) cb2.checked = !!day.b2;
-      
-      const row = document.getElementById("row-"+key);
-      if(row){ 
-          if(day.b1 && day.b2) row.classList.add("done-both"); 
-          else row.classList.remove("done-both"); 
-      }
-      
-      renderLinks(key);
-    }
-  }
-}
-
-document.getElementById("btnReset").addEventListener("click", () => {
-  if(confirm("This clears every checkbox and saved link on this page and erases your local storage. This cannot be undone unless you have an exported backup. Continue?")){
-    Object.keys(STATE).forEach(k => delete STATE[k]);
-    saveState();
-    document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
-    document.querySelectorAll('.day-row').forEach(r => r.classList.remove('done-both'));
-    document.querySelectorAll('.link-toggle').forEach(t => t.classList.remove('has-link'));
-    document.querySelectorAll('.link-row').forEach(r => r.classList.remove('show'));
-    document.querySelectorAll('.link-list').forEach(l => l.innerHTML = '');
-    updateAll();
-  }
-});
-
-document.getElementById("btnExpandAll").addEventListener("click", () => {
-  document.querySelectorAll("details.week-card").forEach(d => d.open = true);
-});
-document.getElementById("btnCollapseAll").addEventListener("click", () => {
-  document.querySelectorAll("details.week-card").forEach(d => d.open = false);
-});
-
-/* ============================= INIT ============================= */
-buildPipeline();
-buildTracker();
-applyStateToDOM();
-updateAll();
-</script>
 </body>
 </html>
