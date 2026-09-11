@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeevanantham R - Senior Data Analyst Portfolio</title>
+    <title>Jeevanantham R | Senior Data Analyst @ Flipkart</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
@@ -16,7 +16,7 @@
                         flipkart: {
                             blue: '#2874f0',
                             yellow: '#ffe11b',
-                            dark: '#172337'
+                            dark: '#0f172a'
                         }
                     }
                 }
@@ -28,139 +28,153 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #2874f0 0%, #172337 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-flipkart-blue selection:text-white">
+<body class="bg-slate-900 text-slate-100 antialiased selection:bg-flipkart-blue selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-xs font-medium py-2 px-4 text-center tracking-wide">
+        🚀 Scaling Data Platforms & Supply Chain Frameworks at <span class="font-bold underline">Flipkart, Bangalore</span>
+    </div>
 
     <!-- Header / Hero Section -->
-    <header class="bg-gradient-to-br from-slate-900 via-slate-800 to-flipkart-dark text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#2874f0_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <header class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-b border-slate-800">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px]"></div>
         
-        <div class="max-w-6xl mx-auto px-6 py-20 relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-                <div class="space-y-4 max-w-2xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 text-sm font-semibold tracking-wide uppercase">
-                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                        Senior Data Analyst @ Flipkart
+        <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 relative z-10">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+                
+                <div class="space-y-6 max-w-3xl">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-400 text-xs font-bold tracking-wider uppercase">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping"></span>
+                        Senior Data Analyst[cite: 1]
                     </div>
-                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-                        Jeevanantham R[cite: 1]
+                    
+                    <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight text-white">
+                        Jeevanantham R
                     </h1>
-                    <p class="text-lg text-slate-300 leading-relaxed font-light">
-                        7+ years of experience across e-commerce, supply chain, and services analytics[cite: 1]. Building scalable performance frameworks, optimization models, and data platforms[cite: 1].
+                    
+                    <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-light">
+                        Driving strategic e-commerce growth through <span class="text-blue-400 font-medium">scalable performance frameworks</span>, supply chain optimisation models, and asset-ranking systems at Flipkart[cite: 1].
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-2 text-sm text-slate-300">
-                        <a href="mailto:jeevanantham302@gmail.com" class="flex items-center gap-2 hover:text-white transition-colors">
+
+                    <div class="flex flex-wrap gap-4 pt-2 text-sm text-slate-300 font-medium">
+                        <a href="mailto:jeevanantham302@gmail.com" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-blue-500 hover:text-white transition-all">
                             <i class="fa-regular fa-envelope text-blue-400"></i> jeevanantham302@gmail.com[cite: 1]
                         </a>
-                        <a href="tel:+919655145451" class="flex items-center gap-2 hover:text-white transition-colors">
+                        <a href="tel:+919655145451" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-blue-500 hover:text-white transition-all">
                             <i class="fa-solid fa-phone text-blue-400"></i> +91 9655145451[cite: 1]
                         </a>
-                        <span class="flex items-center gap-2">
-                            <i class="fa-solid fa-location-dot text-blue-400"></i> Tiruppur & Bangalore, India[cite: 1]
+                        <span class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <i class="fa-solid fa-location-dot text-blue-400"></i> Tiruppur & Bangalore[cite: 1]
                         </span>
                     </div>
                 </div>
 
-                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-md w-full md:w-80 shadow-2xl">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-blue-400 mb-3">Quick Profile Snapshot</h3>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex justify-between border-b border-white/10 pb-2">
+                <!-- Snapshot Widget -->
+                <div class="bg-slate-800/60 border border-slate-700/80 p-6 rounded-3xl backdrop-blur-xl w-full lg:w-80 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-4">Core Metrics Snapshot</h3>
+                    <ul class="space-y-3.5 text-sm">
+                        <li class="flex justify-between items-center border-b border-slate-700/60 pb-2.5">
                             <span class="text-slate-400">Experience</span>
-                            <span class="font-semibold text-white">7+ Years</span>
+                            <span class="font-bold text-white bg-blue-500/20 px-2.5 py-0.5 rounded-md text-xs text-blue-300">7+ Years[cite: 1]</span>
                         </li>
-                        <li class="flex justify-between border-b border-white/10 pb-2">
-                            <span class="text-slate-400">Core Domain</span>
-                            <span class="font-semibold text-white">Supply Chain & Inventory</span>
+                        <li class="flex justify-between items-center border-b border-slate-700/60 pb-2.5">
+                            <span class="text-slate-400">Primary Cloud</span>
+                            <span class="font-semibold text-white">GCP & BigQuery[cite: 1]</span>
                         </li>
-                        <li class="flex justify-between border-b border-white/10 pb-2">
-                            <span class="text-slate-400">Tech Stack</span>
-                            <span class="font-semibold text-white">BigQuery, GCP, SQL, Python</span>
+                        <li class="flex justify-between items-center border-b border-slate-700/60 pb-2.5">
+                            <span class="text-slate-400">Core Focus</span>
+                            <span class="font-semibold text-white">Supply Chain & Inventory[cite: 1]</span>
                         </li>
-                        <li class="flex justify-between">
+                        <li class="flex justify-between items-center">
                             <span class="text-slate-400">Education</span>
                             <span class="font-semibold text-white">B.E. CSE (2018)[cite: 1]</span>
                         </li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </header>
 
     <!-- Main Container -->
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+    <main class="max-w-6xl mx-auto px-6 py-16 space-y-20">
 
         <!-- Skills Section -->
         <section>
-            <div class="flex items-center gap-3 mb-6">
-                <div class="p-2 bg-blue-100 text-flipkart-blue rounded-lg">
-                    <i class="fa-solid fa-code text-lg"></i>
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-xl">
+                    <i class="fa-solid fa-layer-group text-lg"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-900">Technical Expertise & Skills</h2>
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Technical Arsenal & Domains</h2>
+                    <p class="text-sm text-slate-400">Tools, platforms, and analytics environments used to power decisions.</p>
+                </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-chart-pie text-blue-600"></i> Data & Analytics
+                <!-- Skill Card 1 -->
+                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
+                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-chart-pie"></i> Analytics & Core
                     </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">SQL</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Advanced Excel</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Python</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Data Modelling</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">KPI & Metrics Design</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">RCA Frameworks</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">EDA</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">SQL</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Advanced Excel</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Python</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Data Modelling</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">KPI Design</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">RCA Frameworks</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">EDA</span>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-cloud text-blue-600"></i> Cloud & BI
+                <!-- Skill Card 2 -->
+                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
+                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-cloud"></i> Cloud & BI
                     </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Google Cloud (GCP)</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">BigQuery</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Looker Studio</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">QlikView</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Power BI</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Google Cloud (GCP)</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">BigQuery</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Looker Studio</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">QlikView</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Power BI</span>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-database text-blue-600"></i> Platforms & Big Data
+                <!-- Skill Card 3 -->
+                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
+                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-database"></i> Data Platforms
                     </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Spark SQL</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">HiveQL</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">MySQL</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">MS SQL Server</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Flipkart Platform (FDP)</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">SSIS / SSRS</span>
-                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Azure</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Spark SQL</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">HiveQL</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">MySQL</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">MS SQL Server</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Flipkart Platform</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">SSIS / SSRS</span>
+                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Azure</span>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-bullseye text-blue-600"></i> Domains & Focus
+                <!-- Skill Card 4 -->
+                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
+                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-bullseye"></i> Domains
                     </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Inventory Analytics</span>
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Supply Chain & Last Mile</span>
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Customer Experience</span>
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md">Operations Analytics</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Inventory Analytics</span>
+                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Supply Chain & Last Mile</span>
+                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Customer Experience</span>
+                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Operations Analytics</span>
                     </div>
                 </div>
             </div>
@@ -168,111 +182,110 @@
 
         <!-- Professional Experience Section -->
         <section>
-            <div class="flex items-center gap-3 mb-8">
-                <div class="p-2 bg-blue-100 text-flipkart-blue rounded-lg">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="p-2.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-xl">
                     <i class="fa-solid fa-briefcase text-lg"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-900">Professional Experience</h2>
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Professional Journey</h2>
+                    <p class="text-sm text-slate-400">Track record of building data solutions in high-growth environments[cite: 1].</p>
+                </div>
             </div>
 
-            <div class="space-y-10 border-l-2 border-blue-200 ml-4 pl-6 relative">
+            <div class="space-y-12 border-l-2 border-blue-500/30 ml-4 pl-6 md:pl-8 relative">
                 
-                <!-- Experience 1: Flipkart Senior Data Analyst -->
+                <!-- Experience Item 1 -->
                 <div class="relative group">
-                    <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-white bg-blue-600 ring-2 ring-blue-200"></span>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-900 bg-blue-500 ring-4 ring-blue-500/20"></span>
+                    <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl space-y-6 shadow-xl">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-700/60 pb-4">
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900">Senior Data Analyst</h3>
-                                <p class="text-blue-600 font-semibold">Flipkart, Bangalore[cite: 1]</p>
+                                <h3 class="text-xl font-extrabold text-white">Senior Data Analyst</h3>
+                                <p class="text-blue-400 font-semibold text-sm mt-0.5">Flipkart, Bangalore[cite: 1]</p>
                             </div>
-                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full w-max">
+                            <span class="inline-block px-3.5 py-1 bg-blue-500/10 text-blue-300 text-xs font-bold rounded-full border border-blue-500/20 w-max">
                                 April 2021 - Present[cite: 1]
                             </span>
                         </div>
 
                         <!-- Sub-project 1 -->
-                        <div class="space-y-2 border-t border-slate-100 pt-3">
-                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-box-open text-blue-500 text-sm"></i> Flipkart Minutes - Inventory Performance Analytics
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-slate-200 flex items-center gap-2.5 text-base">
+                                <span class="p-1.5 bg-blue-500/20 text-blue-400 rounded-lg text-xs"><i class="fa-solid fa-box-open"></i></span>
+                                Flipkart Minutes - Inventory Performance Analytics
                             </h4>
-                            <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
+                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
                                 <li>Designed and developed an end-to-end inventory performance measurement framework for Flipkart Minutes[cite: 1].</li>
-                                <li>Built scalable data models and dashboards using BigQuery and Looker Studio to track inventory health and demand efficiency[cite: 1].</li>
-                                <li>Defined and operationalised key metrics including Fill Rate, POs, Customer & Order Penetration, OOS, GMV, Conversion, Impressions, DOH, Stock Turns, Ullage, and Inventory Value[cite: 1].</li>
-                                <li>Enabled brand negotiations by providing transparent, data-backed views of inventory productivity and conversion performance[cite: 1].</li>
-                                <li>Drove inventory optimisation by identifying inefficiencies across availability, replenishment, and demand conversion[cite: 1].</li>
+                                <li>Built scalable data models and dashboards using <strong class="text-white font-medium">BigQuery and Looker Studio</strong> to track inventory health and demand efficiency[cite: 1].</li>
+                                <li>Defined core metrics including <span class="text-blue-300 font-semibold">Fill Rate, OOS, GMV, Conversion, DOH, Stock Turns, and Ullage</span>[cite: 1].</li>
+                                <li>Enabled high-stakes brand negotiations with transparent, data-backed views of inventory productivity[cite: 1].</li>
                             </ul>
                         </div>
 
                         <!-- Sub-project 2 -->
-                        <div class="space-y-2 border-t border-slate-100 pt-3">
-                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-truck-fast text-blue-500 text-sm"></i> Grocery Supply Chain - Last Mile Asset Performance
+                        <div class="space-y-3 pt-4 border-t border-slate-700/50">
+                            <h4 class="font-bold text-slate-200 flex items-center gap-2.5 text-base">
+                                <span class="p-1.5 bg-indigo-500/20 text-indigo-400 rounded-lg text-xs"><i class="fa-solid fa-truck-fast"></i></span>
+                                Grocery Supply Chain - Last Mile Asset Performance
                             </h4>
-                            <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
-                                <li>Developed a comprehensive analytics framework to measure last-mile asset performance across the grocery supply chain[cite: 1].</li>
-                                <li>Designed a multi-theme scoring model based on Reliability, Experience, and Losses[cite: 1]. Ranked assets using composite performance scores to identify top-performing and underperforming nodes[cite: 1].</li>
-                                <li>Designed and implemented an asset-level Breach Attribution Model by stitching together multiple upstream and downstream systems (planning, execution, last-mile operations, and customer touchpoints) to enable true root-cause visibility[cite: 1].</li>
-                                <li>Enabled operations teams to prioritise interventions, reduce losses, and improve service reliability with actionable insights[cite: 1].</li>
+                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                                <li>Developed a comprehensive analytics framework to measure last-mile asset performance through a multi-theme scoring model (Reliability, Experience, Losses)[cite: 1].</li>
+                                <li>Engineered an asset-level <strong class="text-white font-medium">Breach Attribution Model</strong> by stitching upstream and downstream operational systems for deep root-cause visibility[cite: 1].</li>
+                                <li>Empowered operations teams to prioritize interventions, reduce losses, and boost service reliability[cite: 1].</li>
                             </ul>
                         </div>
 
                         <!-- Sub-project 3 -->
-                        <div class="space-y-2 border-t border-slate-100 pt-3">
-                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-network-wired text-blue-500 text-sm"></i> Grocery Supply Chain & Jeeves Analytics (Cross-functional)
+                        <div class="space-y-3 pt-4 border-t border-slate-700/50">
+                            <h4 class="font-bold text-slate-200 flex items-center gap-2.5 text-base">
+                                <span class="p-1.5 bg-emerald-500/20 text-emerald-400 rounded-lg text-xs"><i class="fa-solid fa-network-wired"></i></span>
+                                Cross-Functional Analytics & Data Pipelines
                             </h4>
-                            <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
-                                <li>Provided L0 and L1 visibility across supply chain and service operations[cite: 1]. Instrumented RCA frameworks and driver models for customer pain, breaches, and productivity[cite: 1].</li>
-                                <li>Collaborated closely with Planning, Control Tower, Design, Product, and Engineering teams[cite: 1].</li>
-                                <li>Managed and monitored analytics pipelines on Flipkart Data Platform, proactively resolving failures and dependencies[cite: 1].</li>
-                                <li>Supported tech stack migrations and ensured smooth adoption of new dashboards and metric definitions[cite: 1].</li>
+                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                                <li>Instrumented RCA frameworks and driver models for customer pain points across planning, control tower, product, and engineering teams[cite: 1].</li>
+                                <li>Managed and monitored analytics pipelines on Flipkart Data Platform (FDP), ensuring high reliability and proactive dependency resolution[cite: 1].</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Experience 2: Flipkart Data Analyst - Jeeves -->
+                <!-- Experience Item 2 -->
                 <div class="relative group">
-                    <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-white bg-slate-400 ring-2 ring-slate-200"></span>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 space-y-3">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-900 bg-slate-500 ring-4 ring-slate-500/20"></span>
+                    <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl space-y-4 shadow-xl">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-700/60 pb-4">
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900">Data Analyst</h3>
-                                <p class="text-blue-600 font-semibold">Flipkart - Jeeves (Home Services & VAS)[cite: 1]</p>
+                                <h3 class="text-xl font-extrabold text-white">Data Analyst</h3>
+                                <p class="text-blue-400 font-semibold text-sm mt-0.5">Flipkart - Jeeves (Home Services & VAS)[cite: 1]</p>
                             </div>
-                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full w-max">
+                            <span class="inline-block px-3.5 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded-full border border-slate-600 w-max">
                                 April 2021 - May 2023[cite: 1]
                             </span>
                         </div>
-                        <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
-                            <li>Built end-to-end visibility dashboards for installation, repair, and VAS services using QlikView, HiveQL, MySQL and Python[cite: 1].</li>
-                            <li>Designed metrics for Field Failure Rate, Repeat Repair, TAT (L0/L1/L2), Claims Exposure, Policy Base and Part Demand[cite: 1].</li>
-                            <li>Developed outcome-based attribution models for Refund, Replacement and Repair[cite: 1].</li>
-                            <li>Led the complete migration of Jeeves analytics from QlikView to Flipkart Data Platform, enabling stakeholders through transition sessions[cite: 1].</li>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                            <li>Built end-to-end visibility dashboards for installation, repair, and VAS services using <strong class="text-white font-medium">QlikView, HiveQL, MySQL, and Python</strong>[cite: 1].</li>
+                            <li>Designed crucial performance metrics covering Field Failure Rate, Repeat Repair, TAT (L0-L2), Claims Exposure, and Part Demand[cite: 1].</li>
+                            <li>Spearheaded the complete migration of Jeeves analytics over to the central Flipkart Data Platform[cite: 1].</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Experience 3: Pathfinder Business Analysis -->
+                <!-- Experience Item 3 -->
                 <div class="relative group">
-                    <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-4 border-white bg-slate-400 ring-2 ring-slate-200"></span>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 space-y-3">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-900 bg-slate-500 ring-4 ring-slate-500/20"></span>
+                    <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl space-y-4 shadow-xl">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-700/60 pb-4">
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900">Data Engineer</h3>
-                                <p class="text-blue-600 font-semibold">Pathfinder Business Analysis, Coimbatore[cite: 1]</p>
+                                <h3 class="text-xl font-extrabold text-white">Data Engineer</h3>
+                                <p class="text-blue-400 font-semibold text-sm mt-0.5">Pathfinder Business Analysis, Coimbatore[cite: 1]</p>
                             </div>
-                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full w-max">
+                            <span class="inline-block px-3.5 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded-full border border-slate-600 w-max">
                                 June 2018 - March 2021[cite: 1]
                             </span>
                         </div>
-                        <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 pl-1">
-                            <li>Designed and implemented ETL pipelines integrating heterogeneous real estate data sources[cite: 1].</li>
-                            <li>Built and maintained solutions using SQL Server, SSIS, SSRS, Power BI, Python and Azure[cite: 1].</li>
-                            <li>Created stored procedures, views, triggers, and optimised query performance using indexing and execution plans[cite: 1].</li>
-                            <li>Performed DBA activities including backups, restores, performance tuning, and production deployments, delivering reliable data warehouses[cite: 1].</li>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                            <li>Designed and executed complex ETL pipelines integrating diverse real estate data sources using <strong class="text-white font-medium">SQL Server, SSIS, SSRS, Python, and Azure</strong>[cite: 1].</li>
+                            <li>Handled comprehensive database administration (DBA) tasks including query optimization, performance tuning, and production deployments[cite: 1].</li>
                         </ul>
                     </div>
                 </div>
@@ -282,61 +295,64 @@
 
         <!-- Awards & Recognition Section -->
         <section>
-            <div class="flex items-center gap-3 mb-6">
-                <div class="p-2 bg-yellow-100 text-amber-600 rounded-lg">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl">
                     <i class="fa-solid fa-trophy text-lg"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-900">Awards & Recognition</h2>
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Awards & Recognition</h2>
+                    <p class="text-sm text-slate-400">Milestones and peer recognitions for execution excellence.</p>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Award 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
-                    <div class="relative z-10 space-y-2">
-                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Oct 2025</span>
-                        <h3 class="font-bold text-slate-900 text-lg">Ace Alliance Award[cite: 1]</h3>
-                        <p class="text-sm text-slate-600">Delivered critical business agility analyses and built the Buying Looker Dashboard to support brand negotiations and BSM outcomes[cite: 1].</p>
+                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                    <div class="space-y-3">
+                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Oct 2025</span>
+                        <h3 class="font-bold text-white text-lg">Ace Alliance Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">Delivered crucial business agility insights and built the Buying Looker Dashboard to direct brand negotiations[cite: 1].</p>
                     </div>
                 </div>
 
                 <!-- Award 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
-                    <div class="relative z-10 space-y-2">
-                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Apr 2025</span>
-                        <h3 class="font-bold text-slate-900 text-lg">Ace Alliance Award[cite: 1]</h3>
-                        <p class="text-sm text-slate-600">Led the end-to-end development and cross-functional rollout of Grocery Looker dashboards, optimizing backend design and driving platform adoption[cite: 1].</p>
+                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                    <div class="space-y-3">
+                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Apr 2025</span>
+                        <h3 class="font-bold text-white text-lg">Ace Alliance Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">Led end-to-end development and cross-functional rollout of Grocery Looker dashboards, driving massive platform adoption[cite: 1].</p>
                     </div>
                 </div>
 
                 <!-- Award 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
-                    <div class="relative z-10 space-y-2">
-                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Oct 2022</span>
-                        <h3 class="font-bold text-slate-900 text-lg">BBD Spot Award[cite: 1]</h3>
-                        <p class="text-sm text-slate-600">Recognized for high-ownership execution of repair and VAS operations during the Big Billion Days sale[cite: 1].</p>
+                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                    <div class="space-y-3">
+                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Oct 2022</span>
+                        <h3 class="font-bold text-white text-lg">BBD Spot Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">Recognized for high-ownership execution of repair and VAS operations during the Big Billion Days sale[cite: 1].</p>
                     </div>
                 </div>
 
                 <!-- Award 4 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
-                    <div class="relative z-10 space-y-2">
-                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Sep 2022</span>
-                        <h3 class="font-bold text-slate-900 text-lg">SC Analytics - Star of the Month[cite: 1]</h3>
-                        <p class="text-sm text-slate-600">Awarded for customer pain point deep-dives and effective stakeholder collaboration[cite: 1].</p>
+                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                    <div class="space-y-3">
+                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Sep 2022</span>
+                        <h3 class="font-bold text-white text-lg">SC Analytics Star of the Month[cite: 1]</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">Awarded for high-impact customer pain point deep-dives and effective cross-team stakeholder collaboration[cite: 1].</p>
                     </div>
                 </div>
 
                 <!-- Award 5 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative overflow-hidden flex flex-col justify-between md:col-span-2 lg:col-span-1">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
-                    <div class="relative z-10 space-y-2">
-                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Oct 2021</span>
-                        <h3 class="font-bold text-slate-900 text-lg">Best New Talent Award[cite: 1]</h3>
-                        <p class="text-sm text-slate-600">Awarded at Flipkart for rapid business understanding and building RCA frameworks with L0/L1 visibility[cite: 1].</p>
+                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                    <div class="space-y-3">
+                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Oct 2021</span>
+                        <h3 class="font-bold text-white text-lg">Best New Talent Award[cite: 1]</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">Honored at Flipkart for rapid business immersion and building robust L0/L1 visibility RCA frameworks[cite: 1].</p>
                     </div>
                 </div>
             </div>
@@ -345,20 +361,22 @@
         <!-- Education Section -->
         <section>
             <div class="flex items-center gap-3 mb-6">
-                <div class="p-2 bg-blue-100 text-flipkart-blue rounded-lg">
+                <div class="p-2.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-xl">
                     <i class="fa-solid fa-graduation-cap text-lg"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-900">Education</h2>
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Education</h2>
+                </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h3 class="text-xl font-bold text-slate-900">Dr. NGP Institute of Technology, Coimbatore[cite: 1]</h3>
-                    <p class="text-blue-600 font-semibold">Bachelor of Engineering (B.E.) in Computer Science & Engineering[cite: 1]</p>
+                    <h3 class="text-xl font-bold text-white">Dr. NGP Institute of Technology, Coimbatore[cite: 1]</h3>
+                    <p class="text-blue-400 font-semibold text-sm mt-1">Bachelor of Engineering (B.E.) in Computer Science & Engineering[cite: 1]</p>
                 </div>
                 <div class="flex items-center gap-3">
-                    <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full">First Class[cite: 1]</span>
-                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full">May 2014 - June 2018[cite: 1]</span>
+                    <span class="px-3.5 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/20">First Class[cite: 1]</span>
+                    <span class="px-3.5 py-1.5 bg-slate-700 text-slate-300 text-xs font-semibold rounded-full">May 2014 - June 2018[cite: 1]</span>
                 </div>
             </div>
         </section>
@@ -366,18 +384,18 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-20">
-        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+    <footer class="bg-slate-950 text-white border-t border-slate-800/80 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
                 <p class="font-bold text-lg">Jeevanantham R</p>
-                <p class="text-sm text-slate-400">Senior Data Analyst at Flipkart[cite: 1]</p>
+                <p class="text-sm text-slate-400 mt-1">Senior Data Analyst at Flipkart, Bangalore[cite: 1]</p>
             </div>
-            <div class="flex items-center gap-6 text-slate-400">
-                <a href="mailto:jeevanantham302@gmail.com" class="hover:text-white transition-colors" title="Email">
-                    <i class="fa-solid fa-envelope text-xl"></i>
+            <div class="flex items-center gap-4">
+                <a href="mailto:jeevanantham302@gmail.com" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-blue-500 transition-all">
+                    <i class="fa-solid fa-envelope"></i>
                 </a>
-                <a href="tel:+919655145451" class="hover:text-white transition-colors" title="Phone">
-                    <i class="fa-solid fa-phone text-xl"></i>
+                <a href="tel:+919655145451" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-blue-500 transition-all">
+                    <i class="fa-solid fa-phone"></i>
                 </a>
             </div>
         </div>
