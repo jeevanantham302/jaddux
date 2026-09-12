@@ -13,10 +13,11 @@
             theme: {
                 extend: {
                     colors: {
-                        flipkart: {
-                            blue: '#2874f0',
-                            yellow: '#ffe11b',
-                            dark: '#0f172a'
+                        corporate: {
+                            blue: '#0284c7',
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            card: '#ffffff'
                         }
                     }
                 }
@@ -30,65 +31,63 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 antialiased selection:bg-flipkart-blue selection:text-white">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-xs font-medium py-2 px-4 text-center tracking-wide">
+    <div class="bg-blue-700 text-white text-xs font-medium py-2 px-4 text-center tracking-wide shadow-sm">
         🚀 Designing Enterprise-Scale Data Pipelines & Warehouses at <span class="font-bold underline">Flipkart, Bangalore</span>
     </div>
 
     <!-- Header / Hero Section -->
-    <header class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-b border-slate-800">
-        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px]"></div>
-        
-        <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 relative z-10">
+    <header class="relative overflow-hidden bg-white border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 py-12 md:py-16 relative z-10">
             <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
                 
-                <div class="space-y-6 max-w-3xl">
-                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-400 text-xs font-bold tracking-wider uppercase">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping"></span>
+                <div class="space-y-5 max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold tracking-wider uppercase">
+                        <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
                         Data Engineer
                     </div>
                     
-                    <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight text-white">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
                         Jeevanantham R
                     </h1>
                     
-                    <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-light">
-                        Designing batch and streaming data pipelines, warehouses, and metrics platforms across <span class="text-blue-400 font-medium">e-commerce, supply chain, quick commerce (Minutes), and services domains</span> at enterprise scale at Flipkart.
+                    <p class="text-lg text-slate-600 leading-relaxed font-normal">
+                        Designing batch and streaming data pipelines, warehouses, and metrics platforms across <span class="text-blue-700 font-semibold">e-commerce, supply chain, quick commerce (Minutes), and services domains</span> at enterprise scale at Flipkart.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 pt-2 text-sm text-slate-300 font-medium">
-                        <a href="mailto:jeevanantham302@gmail.com" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-blue-500 hover:text-white transition-all">
-                            <i class="fa-regular fa-envelope text-blue-400"></i> jeevanantham302@gmail.com
+                    <div class="flex flex-wrap gap-3 pt-2 text-sm text-slate-700 font-medium">
+                        <!-- Direct Email Compose Link -->
+                        <a href="mailto:jeevanantham302@gmail.com?subject=Inquiry%20regarding%20Data%20Engineering%20opportunities" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 hover:border-blue-600 hover:text-blue-700 transition-all">
+                            <i class="fa-regular fa-envelope text-blue-600"></i> jeevanantham302@gmail.com
                         </a>
-                        <a href="tel:+919655145451" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-blue-500 hover:text-white transition-all">
-                            <i class="fa-solid fa-phone text-blue-400"></i> +91 9655145451
+                        <a href="tel:+919655145451" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 hover:border-blue-600 hover:text-blue-700 transition-all">
+                            <i class="fa-solid fa-phone text-blue-600"></i> +91 9655145451
                         </a>
-                        <span class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700">
-                            <i class="fa-solid fa-location-dot text-blue-400"></i> Tiruppur & Bangalore
+                        <span class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200">
+                            <i class="fa-solid fa-location-dot text-blue-600"></i> Tiruppur & Bangalore
                         </span>
                         <!-- Download Resume Button -->
-                        <a href="https://drive.google.com/uc?export=download&id=16llapCav1l8RBip8DY16wfIDwHeXNnkg" target="_blank" class="flex items-center gap-2 px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-500/20 transition-all">
+                        <a href="https://drive.google.com/uc?export=download&id=16llapCav1l8RBip8DY16wfIDwHeXNnkg" target="_blank" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md shadow-blue-600/20 transition-all">
                             <i class="fa-solid fa-download"></i> Download Resume
                         </a>
                     </div>
                 </div>
 
                 <!-- Snapshot Widget -->
-                <div class="bg-slate-800/60 border border-slate-700/80 p-6 rounded-3xl backdrop-blur-xl w-full lg:w-80 shadow-2xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                <div class="bg-slate-900 text-white p-6 rounded-3xl w-full lg:w-80 shadow-xl relative overflow-hidden">
                     <h3 class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-4">Core Metrics Snapshot</h3>
                     <ul class="space-y-3.5 text-sm">
-                        <li class="flex justify-between items-center border-b border-slate-700/60 pb-2.5">
+                        <li class="flex justify-between items-center border-b border-slate-800 pb-2.5">
                             <span class="text-slate-400">Experience</span>
                             <span class="font-bold text-white bg-blue-500/20 px-2.5 py-0.5 rounded-md text-xs text-blue-300">8+ Years</span>
                         </li>
-                        <li class="flex justify-between items-center border-b border-slate-700/60 pb-2.5">
+                        <li class="flex justify-between items-center border-b border-slate-800 pb-2.5">
                             <span class="text-slate-400">Primary Cloud</span>
                             <span class="font-semibold text-white">GCP, Snowflake</span>
                         </li>
-                        <li class="flex justify-between items-center border-b border-slate-700/60 pb-2.5">
+                        <li class="flex justify-between items-center border-b border-slate-800 pb-2.5">
                             <span class="text-slate-400">Core Focus</span>
                             <span class="font-semibold text-white">ETL/ELT & Pipelines</span>
                         </li>
@@ -106,75 +105,88 @@
     <!-- Main Container -->
     <main class="max-w-6xl mx-auto px-6 py-16 space-y-20">
 
-        <!-- Skills Section -->
+        <!-- Skills & Project Mapping Matrix Section -->
         <section>
             <div class="flex items-center gap-3 mb-8">
-                <div class="p-2.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-xl">
-                    <i class="fa-solid fa-layer-group text-lg"></i>
+                <div class="p-2.5 bg-blue-100 border border-blue-200 text-blue-700 rounded-xl">
+                    <i class="fa-solid fa-network-wired text-lg"></i>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-bold text-white">Technical Arsenal & Domains</h2>
-                    <p class="text-sm text-slate-400">Tools, platforms, and distributed processing infrastructure used to power enterprise data.</p>
+                    <h2 class="text-2xl font-bold text-slate-900">Skills & Associated Projects Matrix</h2>
+                    <p class="text-sm text-slate-600">Quickly check key technical competencies and the specific initiatives where they were applied.</p>
                 </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Skill Card 1 -->
-                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
-                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
-                        <i class="fa-solid fa-code"></i> Languages & Query
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">SQL (Advanced)</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Python</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">PySpark</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">HiveQL</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Spark SQL</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Mapping Card 1 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center gap-2 text-blue-700 font-bold mb-3 uppercase tracking-wider text-sm">
+                        <i class="fa-solid fa-code"></i> Languages & Querying
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">SQL (Advanced)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">Python</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">PySpark</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">HiveQL</span>
+                    </div>
+                    <div class="border-t border-slate-100 pt-3 text-xs text-slate-600 space-y-1">
+                        <p class="font-semibold text-slate-700">Applied in Projects:</p>
+                        <p>• Flipkart Minutes Inventory Platform</p>
+                        <p>• Last-Mile Asset Performance & Attribution</p>
+                        <p>• Jeeves Home Services Platform Migration</p>
                     </div>
                 </div>
 
-                <!-- Skill Card 2 -->
-                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
-                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
+                <!-- Mapping Card 2 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center gap-2 text-blue-700 font-bold mb-3 uppercase tracking-wider text-sm">
                         <i class="fa-solid fa-server"></i> Big Data & Streaming
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Apache Spark</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Kafka</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Hadoop / Hive</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Cloud Pub/Sub</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Apache Airflow</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Cloud Composer</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">Apache Spark</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">Kafka</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">Cloud Pub/Sub</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">Apache Airflow</span>
+                    </div>
+                    <div class="border-t border-slate-100 pt-3 text-xs text-slate-600 space-y-1">
+                        <p class="font-semibold text-slate-700">Applied in Projects:</p>
+                        <p>• Real-time stock availability sync (Kafka/PubSub + Dataflow)</p>
+                        <p>• Batch inventory pipelines orchestrated via Airflow & Composer</p>
                     </div>
                 </div>
 
-                <!-- Skill Card 3 -->
-                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
-                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
+                <!-- Mapping Card 3 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center gap-2 text-blue-700 font-bold mb-3 uppercase tracking-wider text-sm">
                         <i class="fa-solid fa-database"></i> Warehousing & Infra
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">BigQuery</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Snowflake</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">dbt</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Docker</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">Terraform</span>
-                        <span class="px-2.5 py-1 bg-slate-700/60 text-slate-200 text-xs font-medium rounded-lg">MS SQL Server / SSIS</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">BigQuery</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">Snowflake</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">dbt</span>
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-lg">Docker & Terraform</span>
+                    </div>
+                    <div class="border-t border-slate-100 pt-3 text-xs text-slate-600 space-y-1">
+                        <p class="font-semibold text-slate-700">Applied in Projects:</p>
+                        <p>• Modular transformation models via dbt on BigQuery/Snowflake</p>
+                        <p>• Centralised SQL Server warehouse design at Pathfinder</p>
                     </div>
                 </div>
 
-                <!-- Skill Card 4 -->
-                <div class="bg-slate-800/50 border border-slate-700/70 p-6 rounded-2xl hover:border-blue-500/50 transition-all">
-                    <h3 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
-                        <i class="fa-solid fa-bullseye"></i> Domains & Cloud
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">E-commerce</span>
-                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Supply Chain</span>
-                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Quick commerce (Minutes)</span>
-                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Services Domain</span>
-                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Google Cloud Platform</span>
-                        <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-lg">Microsoft Azure</span>
+                <!-- Mapping Card 4 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center gap-2 text-blue-700 font-bold mb-3 uppercase tracking-wider text-sm">
+                        <i class="fa-solid fa-bullseye"></i> Domains & Platforms
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-lg">Quick commerce (Minutes)</span>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-lg">Supply Chain</span>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-lg">E-commerce</span>
+                    </div>
+                    <div class="border-t border-slate-100 pt-3 text-xs text-slate-600 space-y-1">
+                        <p class="font-semibold text-slate-700">Applied in Projects:</p>
+                        <p>• Flipkart Minutes Inventory Performance Platform</p>
+                        <p>• Grocery Supply Chain Asset Scoring & Breach Attribution</p>
                     </div>
                 </div>
             </div>
@@ -183,38 +195,38 @@
         <!-- Professional Experience Section -->
         <section>
             <div class="flex items-center gap-3 mb-10">
-                <div class="p-2.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-xl">
+                <div class="p-2.5 bg-blue-100 border border-blue-200 text-blue-700 rounded-xl">
                     <i class="fa-solid fa-briefcase text-lg"></i>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-bold text-white">Professional Journey</h2>
-                    <p class="text-sm text-slate-400">Track record of building enterprise data pipelines and infrastructure at scale.</p>
+                    <h2 class="text-2xl font-bold text-slate-900">Professional Journey</h2>
+                    <p class="text-sm text-slate-600">Track record of building enterprise data pipelines and infrastructure at scale.</p>
                 </div>
             </div>
 
-            <div class="space-y-12 border-l-2 border-blue-500/30 ml-4 pl-6 md:pl-8 relative">
+            <div class="space-y-12 border-l-2 border-blue-200 ml-4 pl-6 md:pl-8 relative">
                 
                 <!-- Experience Item 1 -->
                 <div class="relative group">
-                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-900 bg-blue-500 ring-4 ring-blue-500/20"></span>
-                    <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl space-y-6 shadow-xl">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-700/60 pb-4">
+                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-50 bg-blue-600 ring-4 ring-blue-100"></span>
+                    <div class="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl space-y-6 shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-100 pb-4">
                             <div>
-                                <h3 class="text-xl font-extrabold text-white">Senior Data Analyst (Data Engineering & Analytics)</h3>
-                                <p class="text-blue-400 font-semibold text-sm mt-0.5">Flipkart, Bangalore</p>
+                                <h3 class="text-xl font-extrabold text-slate-900">Senior Data Analyst (Data Engineering & Analytics)</h3>
+                                <p class="text-blue-700 font-semibold text-sm mt-0.5">Flipkart, Bangalore</p>
                             </div>
-                            <span class="inline-block px-3.5 py-1 bg-blue-500/10 text-blue-300 text-xs font-bold rounded-full border border-blue-500/20 w-max">
+                            <span class="inline-block px-3.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full border border-blue-200 w-max">
                                 April 2021 - Present
                             </span>
                         </div>
 
                         <!-- Sub-project 1 -->
                         <div class="space-y-3">
-                            <h4 class="font-bold text-slate-200 flex items-center gap-2.5 text-base">
-                                <span class="p-1.5 bg-blue-500/20 text-blue-400 rounded-lg text-xs"><i class="fa-solid fa-boxes-stacked"></i></span>
+                            <h4 class="font-bold text-slate-800 flex items-center gap-2.5 text-base">
+                                <span class="p-1.5 bg-blue-50 text-blue-600 rounded-lg text-xs"><i class="fa-solid fa-boxes-stacked"></i></span>
                                 Flipkart Minutes - Inventory Performance Data Platform (Batch + Streaming)
                             </h4>
-                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 pl-1 leading-relaxed">
                                 <li>Engineered an end-to-end inventory performance data pipeline and measurement framework for Flipkart Minutes, landing raw data in Cloud Storage (GCS) and transforming it into BigQuery and Snowflake for downstream reporting.</li>
                                 <li>Orchestrated batch inventory-sync pipelines using Apache Airflow and Google Cloud Composer, coordinating Hadoop/Hive and PySpark jobs run on Dataproc across multiple upstream source systems.</li>
                                 <li>Built and consumed Kafka and Pub/Sub-based streaming feeds, processed through Dataflow, to keep stock and in-stock availability data synchronised across systems in near real time.</li>
@@ -228,12 +240,12 @@
                         </div>
 
                         <!-- Sub-project 2 -->
-                        <div class="space-y-3 pt-4 border-t border-slate-700/50">
-                            <h4 class="font-bold text-slate-200 flex items-center gap-2.5 text-base">
-                                <span class="p-1.5 bg-indigo-500/20 text-indigo-400 rounded-lg text-xs"><i class="fa-solid fa-truck-fast"></i></span>
+                        <div class="space-y-3 pt-4 border-t border-slate-100">
+                            <h4 class="font-bold text-slate-800 flex items-center gap-2.5 text-base">
+                                <span class="p-1.5 bg-indigo-50 text-indigo-600 rounded-lg text-xs"><i class="fa-solid fa-truck-fast"></i></span>
                                 Grocery Supply Chain - Last-Mile Asset Performance & Attribution
                             </h4>
-                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 pl-1 leading-relaxed">
                                 <li>Designed a multi-theme scoring data model (Reliability, Experience, Losses) to rank last-mile assets, processing high-volume event logs with Hadoop/Hive and PySpark on Dataproc.</li>
                                 <li>Built an asset-level Breach Attribution data model by stitching upstream and downstream systems (planning, execution, last-mile operations, customer touchpoints) via Pub/Sub and Dataflow streaming pipelines orchestrated with Cloud Composer, feeding a Bigtable-backed serving layer for root-cause visibility.</li>
                                 <li>Delivered pipeline-driven insights that enabled operations teams to prioritise interventions, reduce losses, and improve service reliability.</li>
@@ -241,12 +253,12 @@
                         </div>
 
                         <!-- Sub-project 3 -->
-                        <div class="space-y-3 pt-4 border-t border-slate-700/50">
-                            <h4 class="font-bold text-slate-200 flex items-center gap-2.5 text-base">
-                                <span class="p-1.5 bg-emerald-500/20 text-emerald-400 rounded-lg text-xs"><i class="fa-solid fa-network-wired"></i></span>
+                        <div class="space-y-3 pt-4 border-t border-slate-100">
+                            <h4 class="font-bold text-slate-800 flex items-center gap-2.5 text-base">
+                                <span class="p-1.5 bg-emerald-50 text-emerald-600 rounded-lg text-xs"><i class="fa-solid fa-network-wired"></i></span>
                                 Grocery Supply Chain & Jeeves Analytics - Platform Operations (Cross-functional)
                             </h4>
-                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 pl-1 leading-relaxed">
                                 <li>Owned and monitored production analytics pipelines on the Flipkart Data Platform (FDP), proactively identifying and resolving job failures and upstream/downstream dependency issues.</li>
                                 <li>Instrumented RCA frameworks and driver models providing L0/L1 visibility into customer pain points, breaches, and productivity.</li>
                                 <li>Supported tech-stack migrations end-to-end, ensuring accurate data mapping and smooth stakeholder adoption of new dashboards and metric definitions.</li>
@@ -257,18 +269,18 @@
 
                 <!-- Experience Item 2 -->
                 <div class="relative group">
-                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-900 bg-slate-500 ring-4 ring-slate-500/20"></span>
-                    <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl space-y-4 shadow-xl">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-700/60 pb-4">
+                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-50 bg-slate-400 ring-4 ring-slate-200"></span>
+                    <div class="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl space-y-4 shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-100 pb-4">
                             <div>
-                                <h3 class="text-xl font-extrabold text-white">Data Analyst</h3>
-                                <p class="text-blue-400 font-semibold text-sm mt-0.5">Flipkart - Jeeves (Home Services & VAS)</p>
+                                <h3 class="text-xl font-extrabold text-slate-900">Data Analyst</h3>
+                                <p class="text-blue-700 font-semibold text-sm mt-0.5">Flipkart - Jeeves (Home Services & VAS)</p>
                             </div>
-                            <span class="inline-block px-3.5 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded-full border border-slate-600 w-max">
+                            <span class="inline-block px-3.5 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-full border border-slate-200 w-max">
                                 April 2021 - May 2023
                             </span>
                         </div>
-                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 pl-1 leading-relaxed">
                             <li>Built end-to-end data pipelines and visibility dashboards for installation, repair, and VAS services using QlikView, HiveQL, MySQL, and Python.</li>
                             <li>Designed data models and metrics for Field Failure Rate, Repeat Repair, TAT (L0/L1/L2), Claims Exposure, Policy Base, and Part Demand.</li>
                             <li>Developed outcome-based attribution data models for Refund, Replacement, and Repair decisioning.</li>
@@ -280,18 +292,18 @@
 
                 <!-- Experience Item 3 -->
                 <div class="relative group">
-                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-900 bg-slate-500 ring-4 ring-slate-500/20"></span>
-                    <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl space-y-4 shadow-xl">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-700/60 pb-4">
+                    <span class="absolute -left-[35px] md:-left-[41px] top-1.5 w-4 h-4 rounded-full border-4 border-slate-50 bg-slate-400 ring-4 ring-slate-200"></span>
+                    <div class="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl space-y-4 shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-100 pb-4">
                             <div>
-                                <h3 class="text-xl font-extrabold text-white">Data Engineer</h3>
-                                <p class="text-blue-400 font-semibold text-sm mt-0.5">Pathfinder Business Analysis, Coimbatore</p>
+                                <h3 class="text-xl font-extrabold text-slate-900">Data Engineer</h3>
+                                <p class="text-blue-700 font-semibold text-sm mt-0.5">Pathfinder Business Analysis, Coimbatore</p>
                             </div>
-                            <span class="inline-block px-3.5 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded-full border border-slate-600 w-max">
+                            <span class="inline-block px-3.5 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-full border border-slate-200 w-max">
                                 June 2018 - March 2021
                             </span>
                         </div>
-                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 pl-1 leading-relaxed">
                             <li>Designed and implemented ETL pipelines integrating heterogeneous real-estate data sources into a centralised SQL Server data warehouse.</li>
                             <li>Built and maintained data solutions using SQL Server, SSIS, SSRS, Power BI, Python, and Azure.</li>
                             <li>Created stored procedures, views, and triggers; optimised query performance through indexing and execution-plan tuning.</li>
@@ -307,63 +319,58 @@
         <!-- Awards & Recognition Section -->
         <section>
             <div class="flex items-center gap-3 mb-8">
-                <div class="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl">
+                <div class="p-2.5 bg-amber-100 border border-amber-200 text-amber-700 rounded-xl">
                     <i class="fa-solid fa-trophy text-lg"></i>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-bold text-white">Awards & Recognition</h2>
-                    <p class="text-sm text-slate-400">Milestones and peer recognitions for execution excellence.</p>
+                    <h2 class="text-2xl font-bold text-slate-900">Awards & Recognition</h2>
+                    <p class="text-sm text-slate-600">Milestones and peer recognitions for execution excellence.</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Award 1 -->
-                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
-                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-sm hover:border-amber-400 transition-all">
                     <div class="space-y-3">
-                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Oct 2025</span>
-                        <h3 class="font-bold text-white text-lg">Ace Alliance Award</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed">Delivered business-agility analyses and built the Buying Looker Dashboard supporting brand negotiations and BSM outcomes.</p>
+                        <span class="inline-block px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-extrabold rounded-md uppercase tracking-wider border border-amber-200">Oct 2025</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Ace Alliance Award</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Delivered business-agility analyses and built the Buying Looker Dashboard supporting brand negotiations and BSM outcomes.</p>
                     </div>
                 </div>
 
                 <!-- Award 2 -->
-                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
-                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-sm hover:border-amber-400 transition-all">
                     <div class="space-y-3">
-                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Apr 2025</span>
-                        <h3 class="font-bold text-white text-lg">Ace Alliance Award</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed">Led end-to-end development and cross-functional rollout of Grocery Looker dashboards, optimising backend design and driving adoption.</p>
+                        <span class="inline-block px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-extrabold rounded-md uppercase tracking-wider border border-amber-200">Apr 2025</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Ace Alliance Award</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Led end-to-end development and cross-functional rollout of Grocery Looker dashboards, optimising backend design and driving adoption.</p>
                     </div>
                 </div>
 
                 <!-- Award 3 -->
-                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
-                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-sm hover:border-amber-400 transition-all">
                     <div class="space-y-3">
-                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Oct 2022</span>
-                        <h3 class="font-bold text-white text-lg">BBD Spot Award</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed">Recognised for high-ownership execution of repair and VAS operations during the Big Billion Days sale.</p>
+                        <span class="inline-block px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-extrabold rounded-md uppercase tracking-wider border border-amber-200">Oct 2022</span>
+                        <h3 class="font-bold text-slate-900 text-lg">BBD Spot Award</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Recognised for high-ownership execution of repair and VAS operations during the Big Billion Days sale.</p>
                     </div>
                 </div>
 
                 <!-- Award 4 -->
-                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all">
-                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-sm hover:border-amber-400 transition-all">
                     <div class="space-y-3">
-                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Sep 2022</span>
-                        <h3 class="font-bold text-white text-lg">SC Analytics - Star of the Month</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed">Awarded for customer pain-point deep-dives and stakeholder collaboration.</p>
+                        <span class="inline-block px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-extrabold rounded-md uppercase tracking-wider border border-amber-200">Sep 2022</span>
+                        <h3 class="font-bold text-slate-900 text-lg">SC Analytics - Star of the Month</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Awarded for customer pain-point deep-dives and stakeholder collaboration.</p>
                     </div>
                 </div>
 
                 <!-- Award 5 -->
-                <div class="bg-slate-800/50 border border-slate-700/80 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between hover:border-amber-500/40 transition-all md:col-span-2 lg:col-span-1">
-                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-sm hover:border-amber-400 transition-all md:col-span-2 lg:col-span-1">
                     <div class="space-y-3">
-                        <span class="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-extrabold rounded-md uppercase tracking-wider">Oct 2021</span>
-                        <h3 class="font-bold text-white text-lg">Best New Talent Award</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed">Recognised for rapid business understanding and building RCA frameworks with L0/L1 visibility.</p>
+                        <span class="inline-block px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-extrabold rounded-md uppercase tracking-wider border border-amber-200">Oct 2021</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Best New Talent Award</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Recognised for rapid business understanding and building RCA frameworks with L0/L1 visibility.</p>
                     </div>
                 </div>
             </div>
@@ -372,36 +379,36 @@
         <!-- Education Section -->
         <section>
             <div class="flex items-center gap-3 mb-6">
-                <div class="p-2.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-xl">
+                <div class="p-2.5 bg-blue-100 border border-blue-200 text-blue-700 rounded-xl">
                     <i class="fa-solid fa-graduation-cap text-lg"></i>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-bold text-white">Education</h2>
+                    <h2 class="text-2xl font-bold text-slate-900">Education</h2>
                 </div>
             </div>
 
             <div class="space-y-4">
                 <!-- Education Item 1 (NMIMS MBA) -->
-                <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-sm">
                     <div>
-                        <h3 class="text-xl font-bold text-white">SVKM's Narsee Monjee Institute of Management Studies (NMIMS)</h3>
-                        <p class="text-blue-400 font-semibold text-sm mt-1">Master of Business Administration - MBA, Operations & Data Sciences</p>
+                        <h3 class="text-xl font-bold text-slate-900">SVKM's Narsee Monjee Institute of Management Studies (NMIMS)</h3>
+                        <p class="text-blue-700 font-semibold text-sm mt-1">Master of Business Administration - MBA, Operations & Data Sciences</p>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span class="px-3.5 py-1.5 bg-blue-500/10 text-blue-300 text-xs font-bold rounded-full border border-blue-500/20">Postgraduate</span>
-                        <span class="px-3.5 py-1.5 bg-slate-700 text-slate-300 text-xs font-semibold rounded-full">Sep 2024 - Jul 2026</span>
+                        <span class="px-3.5 py-1.5 bg-blue-50 text-blue-700 text-xs font-bold rounded-full border border-blue-200">Postgraduate</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full">Sep 2024 - Jul 2026</span>
                     </div>
                 </div>
 
                 <!-- Education Item 2 (B.E. CSE) -->
-                <div class="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-sm">
                     <div>
-                        <h3 class="text-xl font-bold text-white">Dr. NGP Institute of Technology, Coimbatore</h3>
-                        <p class="text-blue-400 font-semibold text-sm mt-1">Bachelor of Engineering (B.E.) in Computer Science & Engineering</p>
+                        <h3 class="text-xl font-bold text-slate-900">Dr. NGP Institute of Technology, Coimbatore</h3>
+                        <p class="text-blue-700 font-semibold text-sm mt-1">Bachelor of Engineering (B.E.) in Computer Science & Engineering</p>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span class="px-3.5 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/20">First Class</span>
-                        <span class="px-3.5 py-1.5 bg-slate-700 text-slate-300 text-xs font-semibold rounded-full">May 2014 - June 2018</span>
+                        <span class="px-3.5 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full border border-emerald-200">First Class</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full">May 2014 - June 2018</span>
                     </div>
                 </div>
             </div>
@@ -410,20 +417,20 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-white border-t border-slate-800/80 mt-20">
+    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-20">
         <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
                 <p class="font-bold text-lg">Jeevanantham R</p>
                 <p class="text-sm text-slate-400 mt-1">Data Engineer at Flipkart, Bangalore</p>
             </div>
             <div class="flex items-center gap-4">
-                <a href="mailto:jeevanantham302@gmail.com" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-blue-500 transition-all" title="Email">
+                <a href="mailto:jeevanantham302@gmail.com?subject=Inquiry%20regarding%20Data%20Engineering%20opportunities" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white hover:border-blue-500 transition-all" title="Email">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
-                <a href="tel:+919655145451" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-blue-500 transition-all" title="Phone">
+                <a href="tel:+919655145451" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white hover:border-blue-500 transition-all" title="Phone">
                     <i class="fa-solid fa-phone"></i>
                 </a>
-                <a href="https://drive.google.com/uc?export=download&id=16llapCav1l8RBip8DY16wfIDwHeXNnkg" target="_blank" class="h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-lg shadow-blue-500/20">
+                <a href="https://drive.google.com/uc?export=download&id=16llapCav1l8RBip8DY16wfIDwHeXNnkg" target="_blank" class="h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-md shadow-blue-600/20">
                     <i class="fa-solid fa-download"></i> Resume
                 </a>
             </div>
